@@ -1,0 +1,16 @@
+{
+  "name": "vardhman-jewellers",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Vardhman Jewellers, Talab Tillo, Jammu — luxury jewellery website managed through Pages CMS and deployed on GitHub Pages.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "astro": "^5.1.0"
+  }
+}
