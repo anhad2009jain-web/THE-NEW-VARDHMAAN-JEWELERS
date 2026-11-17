@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <rect width="1920" height="1080" fill="#F1E4D3"/>
+  <rect x="115" y="65" width="1690" height="950" fill="none" stroke="#B08D57" stroke-width="3"/>
+  <circle cx="960" cy="454" r="250" fill="none" stroke="#B08D57" stroke-width="4"/>
+  <circle cx="960" cy="454" r="173" fill="none" stroke="#B08D57" stroke-width="2"/>
+  <text x="960" y="713" font-family="Georgia, 'Times New Roman', serif" font-size="86" fill="#171615" text-anchor="middle" letter-spacing="2">DEMO HERO IMAGE</text>
+  <text x="960" y="778" font-family="Arial, sans-serif" font-size="42" fill="#171615" text-anchor="middle" opacity="0.65">Replace with your campaign photograph in Pages CMS</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <rect width="1400" height="900" fill="#E9DFCF"/>
+  <rect x="84" y="54" width="1232" height="792" fill="none" stroke="#B69A62" stroke-width="3"/>
+  <circle cx="700" cy="378" r="182" fill="none" stroke="#B69A62" stroke-width="4"/>
+  <circle cx="700" cy="378" r="126" fill="none" stroke="#B69A62" stroke-width="2"/>
+  <text x="700" y="594" font-family="Georgia, 'Times New Roman', serif" font-size="63" fill="#171615" text-anchor="middle" letter-spacing="2">DEMO SHOWROOM PHOTO</text>
+  <text x="700" y="648" font-family="Arial, sans-serif" font-size="31" fill="#171615" text-anchor="middle" opacity="0.65">Replace in Pages CMS → Business Information</text>
+</svg>
