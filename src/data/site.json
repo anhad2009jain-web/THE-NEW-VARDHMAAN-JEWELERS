@@ -1,10 +1,10 @@
 {
-  "businessName": "Vardhman Jewellers",
+  "businessName": "THE NEW VARDHMAN JEWELLERS",
   "tagline": "The New Vardhman Jewellers ",
   "logo": "/uploads/TNVJ-1.jpeg",
   "favicon": "/favicon.svg",
   "contact": {
-    "phonePrimary": "+91 90000 00001",
+    "phonePrimary": "+91 9419186382",
     "phoneSecondary": "+91 9419186382",
     "whatsapp": "9419186382",
     "email": "hello@example.com"
@@ -33,7 +33,7 @@
     "heading": "A Jewellery House Built on Trust",
     "shortIntro": "Fine gold, diamond and silver jewellery from the heart of Jammu.",
     "description": "Vardhman Jewellers is a family-run jewellery house in Talab Tillo, Jammu, serving generations of families with hallmarked gold, certified diamond and fine silver jewellery.\n\nEvery piece in our showroom is selected for its craftsmanship and purity. We believe jewellery is not merely an ornament — it is a memory, an investment and a blessing that passes from one generation to the next.\n\nVisit our showroom to experience our wedding and everyday collections in person. Our team will gladly walk you through purity, hallmarking and transparent pricing for every article.",
-    "photo": "/uploads/about/showroom.svg",
+    "photo": "/uploads/TNVJ-2.jpeg",
     "interiorPhotos": [
       "/uploads/about/interior-1.svg",
       "/uploads/about/interior-2.svg"
