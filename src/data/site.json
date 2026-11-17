@@ -1,16 +1,16 @@
 {
   "businessName": "Vardhman Jewellers",
   "tagline": "The New Vardhman Jewellers",
-  "logo": "/uploads/brand/logo.svg",
+  "logo": "/uploads/TNVJ-1.jpeg",
   "favicon": "/favicon.svg",
   "contact": {
     "phonePrimary": "+91 90000 00001",
-    "phoneSecondary": "+91 90000 00002",
-    "whatsapp": "919000000001",
+    "phoneSecondary": "+91 9419186382",
+    "whatsapp": "9419186382",
     "email": "hello@example.com"
   },
   "address": {
-    "line1": "Main Market, Talab Tillo",
+    "line1": "TALAB TILLO ,OPPOSITE JAI HIND BAKERY",
     "line2": "Near Talab Tillo Chowk",
     "city": "Jammu",
     "state": "Jammu & Kashmir",
