@@ -1,0 +1,313 @@
+---
+import Base from '../layouts/Base.astro';
+import ProductCard from '../components/ProductCard.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+import site from '../data/site.json';
+import homepage from '../data/homepage.json';
+import { getCategories, getProducts, getTestimonials, getAlbums, getReviews } from '../lib/content';
+import { href, asset } from '../lib/urls';
+
+const hp = homepage;
+const sec = hp.sections;
+
+const categories = await getCategories();
+const products = await getProducts();
+const testimonials = await getTestimonials();
+const albums = await getAlbums();
+const reviews = await getReviews();
+
+// Featured products: explicit IDs from CMS first, then "featured" flag.
+const byIds = (hp.featuredProductIds || [])
+  .map((id) => products.find((p) => p.data.productId === id))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p));
+const featured = byIds.length > 0 ? byIds : products.filter((p) => p.data.featured);
+
+const weddingFeatured = products.filter((p) => p.data.occasion === 'wedding' && p.data.availability !== 'sold').slice(0, 4);
+const everyday = products.filter((p) => p.data.occasion === 'everyday').slice(0, 4);
+const traditional = products.filter((p) => p.data.occasion === 'traditional').slice(0, 4);
+const newArrivals = products.filter((p) => p.data.newArrival).slice(0, 4);
+const bestsellers = products.filter((p) => p.data.bestseller).slice(0, 4);
+const goldCats = categories.filter((c) => c.data.group === 'gold').slice(0, 4);
+const diamondCats = categories.filter((c) => c.data.group === 'diamond').slice(0, 4);
+const featuredAlbums = albums.filter((a) => a.data.featuredOnHomepage).slice(0, 3);
+
+const addr = site.address;
+const addressLine = [addr.line1, addr.line2, `${addr.city}, ${addr.state} ${addr.pincode}`].filter(Boolean).join(', ');
+---
+
+<Base title={hp.seo.title} description={hp.seo.description} ogImage={hp.seo.ogImage}>
+  <!-- Hero -->
+  <section class="hero">
+    {hp.hero.images[0] && (
+      <img src={asset(hp.hero.images[0])} alt={hp.hero.headline} fetchpriority="high" width="1920" height="1080" />
+    )}
+    <div class="hero-overlay">
+      <h1>{hp.hero.headline}</h1>
+      <p>{hp.hero.subheading}</p>
+      <div>
+        {hp.hero.primaryButtonLabel && (
+          <a class="btn btn-solid" href={href(hp.hero.primaryButtonLink || '/collections')}>{hp.hero.primaryButtonLabel}</a>
+        )}
+        {hp.hero.secondaryButtonLabel && (
+          <a class="btn btn-outline" href={href(hp.hero.secondaryButtonLink || '/collections/wedding')}>{hp.hero.secondaryButtonLabel}</a>
+        )}
+      </div>
+    </div>
+  </section>
+
+  {hp.promoText && <div class="promo-strip">{hp.promoText}</div>}
+
+  <!-- 1. Featured Wedding Collection -->
+  {sec.showFeaturedWedding && weddingFeatured.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Featured Wedding Collection</h2>
+          <div class="rule"></div>
+          <p>Complete bridal ensembles and statement pieces for your most important day.</p>
+        </div>
+        <div class="grid">
+          {weddingFeatured.map((p) => <ProductCard product={p} />)}
+        </div>
+        <div class="text-center mt-40">
+          <a class="btn btn-dark" href={href('/collections/wedding')}>View Wedding Collection</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- 2. Everyday Elegance -->
+  {sec.showEveryday && everyday.length > 0 && (
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Everyday Elegance</h2>
+          <div class="rule"></div>
+          <p>Lightweight, comfortable jewellery made for daily wear.</p>
+        </div>
+        <div class="grid">
+          {everyday.map((p) => <ProductCard product={p} />)}
+        </div>
+        <div class="text-center mt-40">
+          <a class="btn btn-dark" href={href('/collections/everyday')}>Shop Everyday Jewellery</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- 3. Gold Jewellery -->
+  {sec.showGold && goldCats.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>{site.groupLabels.gold.heading}</h2>
+          <div class="rule"></div>
+          <p>{site.groupLabels.gold.description}</p>
+        </div>
+        <div class="grid">
+          {goldCats.map((c) => <CategoryCard category={c} />)}
+        </div>
+        <div class="text-center mt-40">
+          <a class="btn btn-dark" href={href('/collections/gold')}>All Gold Jewellery</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- 4. Diamond Jewellery -->
+  {sec.showDiamond && diamondCats.length > 0 && (
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>{site.groupLabels.diamond.heading}</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="grid">
+          {diamondCats.map((c) => <CategoryCard category={c} />)}
+        </div>
+        <div class="text-center mt-40">
+          <a class="btn btn-dark" href={href('/collections/diamond')}>All Diamond Jewellery</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- 5. Traditional Jewellery -->
+  {sec.showTraditional && traditional.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Traditional Jewellery</h2>
+          <div class="rule"></div>
+          <p>Heritage designs crafted for festivals and family occasions.</p>
+        </div>
+        <div class="grid">
+          {traditional.map((p) => <ProductCard product={p} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- 6. New Arrivals -->
+  {sec.showNewArrivals && newArrivals.length > 0 && (
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>{hp.newArrivalsHeading || 'New Arrivals'}</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="grid">
+          {newArrivals.map((p) => <ProductCard product={p} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- 7. Bestselling Designs -->
+  {sec.showBestsellers && bestsellers.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>{hp.bestsellersHeading || 'Bestselling Designs'}</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="grid">
+          {bestsellers.map((p) => <ProductCard product={p} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- 8. Our Craftsmanship -->
+  {sec.showCraftsmanship && (
+    <section class="section alt">
+      <div class="container split">
+        <div>
+          {hp.craftsmanship.image && (
+            <img src={asset(hp.craftsmanship.image)} alt={hp.craftsmanship.heading} loading="lazy" width="1200" height="900" />
+          )}
+        </div>
+        <div style="align-self:center;">
+          <div class="section-head" style="text-align:left; margin-bottom:20px;">
+            <h2>{hp.craftsmanship.heading}</h2>
+            <div class="rule" style="margin-left:0;"></div>
+          </div>
+          <p style="color:var(--taupe); max-width:52ch;">{hp.craftsmanship.text}</p>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- 9. Why Vardhman Jewellers -->
+  {sec.showWhyUs && hp.whyUs.points.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>{hp.whyUs.heading}</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="grid">
+          {hp.whyUs.points.map((pt) => (
+            <div class="testimonial">
+              <h3 style="font-size:22px;">{pt.title}</h3>
+              <p style="font-size:14px; color:var(--taupe);">{pt.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- 10. Customer Testimonials -->
+  {sec.showTestimonials && testimonials.length > 0 && (
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Customer Testimonials</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="grid cols-3">
+          {testimonials.slice(0, 6).map((t) => <TestimonialCard testimonial={t} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Customer Reviews -->
+  {sec.showReviews && reviews.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>{hp.reviewsHeading || 'What Our Customers Say'}</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="grid cols-3">
+          {reviews.slice(0, 3).map((r) => <ReviewCard review={r} />)}
+        </div>
+        <div class="text-center mt-40">
+          <a class="btn btn-dark" href={href('/reviews')}>Read All Reviews</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Gallery albums -->
+  {sec.showGallery && featuredAlbums.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>From Our Gallery</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="grid cols-3 album-grid">
+          {featuredAlbums.map((a) => (
+            <article class="card">
+              <a href={href(`/gallery/${a.slug}`)} class="thumb" style="aspect-ratio:4/3;">
+                <img src={asset(a.data.coverImage)} alt={a.data.name} loading="lazy" width="800" height="600" />
+              </a>
+              <div class="card-body">
+                <h3><a href={href(`/gallery/${a.slug}`)}>{a.data.name}</a></h3>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div class="text-center mt-40">
+          <a class="btn btn-dark" href={href('/gallery')}>View Gallery</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- 11. Visit Our Store -->
+  {sec.showVisitStore && (
+    <section class="section alt">
+      <div class="container split">
+        <div style="align-self:center;">
+          <div class="section-head" style="text-align:left; margin-bottom:20px;">
+            <h2>{hp.visitStore.heading}</h2>
+            <div class="rule" style="margin-left:0;"></div>
+          </div>
+          <p style="color:var(--taupe); max-width:52ch;">{hp.visitStore.text}</p>
+          <ul class="info-list" style="margin-top:24px;">
+            <li><b>Address</b>{addressLine}</li>
+            <li><b>Hours</b>{site.hours.openingTime} – {site.hours.closingTime} · {site.hours.weeklyHolidays}</li>
+            <li><b>Phone</b><a href={`tel:${site.contact.phonePrimary.replace(/\s/g, '')}`}>{site.contact.phonePrimary}</a></li>
+          </ul>
+          <div class="cta-row">
+            {site.googleMapsUrl && (
+              <a class="btn btn-dark" href={site.googleMapsUrl} target="_blank" rel="noopener">Get Directions</a>
+            )}
+            <a class="btn btn-solid" href={`https://wa.me/${site.contact.whatsapp}`} target="_blank" rel="noopener">WhatsApp Us</a>
+          </div>
+        </div>
+        <div>
+          {site.about.exteriorPhotos[0] && (
+            <img src={asset(site.about.exteriorPhotos[0])} alt={`${site.businessName} showroom exterior`} loading="lazy" width="1200" height="1200" />
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+</Base>

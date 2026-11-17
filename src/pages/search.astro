@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+import { href } from '../lib/urls';
+
+const searchIndexUrl = href('/search-index.json');
+---
+
+<Base title="Search" description="Search jewellery by name, category, purity or product ID.">
+  <div class="container">
+    <div class="page-head">
+      <h1>Search</h1>
+      <p>Find jewellery by name, category, purity or product ID.</p>
+    </div>
+
+    <section class="section" style="padding-top:28px;">
+      <div class="filters">
+        <div style="flex:1; min-width:240px;">
+          <label for="q">Search Term</label>
+          <input id="q" type="search" placeholder="e.g. bangle, 22K, VJ-GB-001…" style="width:100%;" autofocus />
+        </div>
+      </div>
+      <div class="grid" id="results"></div>
+      <p class="empty-note" id="hint">Type above to search our catalogue.</p>
+    </section>
+  </div>
+
+  <script define:vars={{ searchIndexUrl }}>
+    let index = [];
+    const results = document.getElementById('results');
+    const hint = document.getElementById('hint');
+    const q = document.getElementById('q');
+
+    fetch(searchIndexUrl)
+      .then((r) => r.json())
+      .then((data) => { index = data; })
+      .catch(() => { if (hint) hint.textContent = 'Search is unavailable right now.'; });
+
+    function render(items) {
+      if (!results) return;
+      results.innerHTML = items.map((item) => `
+        <article class="card">
+          <a class="thumb" href="${item.url}"><img src="${item.image}" alt="${item.name}" loading="lazy"></a>
+          <div class="card-body">
+            <h3><a href="${item.url}">${item.name}</a></h3>
+            <div class="card-meta"><span>${item.purity}</span><span>${item.weight}</span><span>${item.category}</span></div>
+            <div class="card-price">${item.price}</div>
+          </div>
+        </article>`).join('');
+      if (hint) hint.style.display = items.length ? 'none' : '';
+      if (hint && !items.length) hint.textContent = 'No matching jewellery found.';
+    }
+
+    let t;
+    q?.addEventListener('input', () => {
+      clearTimeout(t);
+      t = setTimeout(() => {
+        const term = q.value.trim().toLowerCase();
+        if (term.length < 2) { render([]); if (hint) hint.textContent = 'Type above to search our catalogue.'; return; }
+        render(index.filter((i) => i.haystack.includes(term)).slice(0, 24));
+      }, 150);
+    });
+  </script>
+</Base>

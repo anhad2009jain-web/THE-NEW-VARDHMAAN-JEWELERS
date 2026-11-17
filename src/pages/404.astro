@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import { href } from '../lib/urls';
+---
+
+<Base title="Page Not Found" description="The page you are looking for could not be found.">
+  <div class="container">
+    <section class="section text-center">
+      <h1 style="font-size:clamp(40px,8vw,80px);">404</h1>
+      <p style="color:var(--taupe); margin:16px 0 28px;">
+        The page you are looking for could not be found.
+      </p>
+      <a class="btn btn-dark" href={href('/')}>Return Home</a>
+    </section>
+  </div>
+</Base>

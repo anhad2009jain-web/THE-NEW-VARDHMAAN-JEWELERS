@@ -1,0 +1,17 @@
+---
+import type { Testimonial } from '../lib/content';
+
+interface Props {
+  testimonial: Testimonial;
+}
+
+const { testimonial } = Astro.props;
+const t = testimonial.data;
+const stars = '★'.repeat(t.rating) + '☆'.repeat(Math.max(0, 5 - t.rating));
+---
+
+<div class="testimonial">
+  <div class="stars" aria-label={`${t.rating} out of 5 stars`}>{stars}</div>
+  <blockquote>“{t.quote}”</blockquote>
+  <div class="who">{t.customerName}{t.location && ` · ${t.location}`}</div>
+</div>

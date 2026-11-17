@@ -1,0 +1,80 @@
+---
+import site from '../data/site.json';
+import { href, asset } from '../lib/urls';
+
+const addr = site.address;
+const addressLine = [addr.line1, addr.line2, `${addr.city}, ${addr.state} ${addr.pincode}`, addr.country]
+  .filter(Boolean)
+  .join(', ');
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">{site.businessName}</div>
+        <p style="margin: 12px 0 18px; max-width: 42ch; font-size: 14px; color: var(--taupe);">
+          {site.footer.aboutBlurb}
+        </p>
+        <div style="display:flex; gap:16px; font-size:13px;">
+          {site.social.instagramUrl && (
+            <a href={site.social.instagramUrl} target="_blank" rel="noopener">
+              Instagram {site.social.instagramUsername || ''}
+            </a>
+          )}
+          {site.social.facebookUrl && (
+            <a href={site.social.facebookUrl} target="_blank" rel="noopener">Facebook</a>
+          )}
+          {site.contact.email && <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>}
+        </div>
+      </div>
+
+      <div>
+        <h4>Visit Us</h4>
+        <p style="font-size:14px;">{addressLine}</p>
+        <p style="font-size:14px; margin-top:10px;">
+          {site.hours.openingTime} – {site.hours.closingTime}<br />
+          {site.hours.weeklyHolidays}
+        </p>
+        {site.googleMapsUrl && (
+          <p style="margin-top:10px; font-size:14px;">
+            <a href={site.googleMapsUrl} target="_blank" rel="noopener" style="color: var(--gold);">Get Directions →</a>
+          </p>
+        )}
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <p style="font-size:14px;">
+          <a href={`tel:${site.contact.phonePrimary.replace(/\s/g, '')}`}>{site.contact.phonePrimary}</a><br />
+          {site.contact.phoneSecondary && (
+            <a href={`tel:${site.contact.phoneSecondary.replace(/\s/g, '')}`}>{site.contact.phoneSecondary}</a>
+          )}
+        </p>
+        <p style="font-size:14px; margin-top:10px;">
+          <a href={`https://wa.me/${site.contact.whatsapp}`} target="_blank" rel="noopener" style="color: var(--gold);">
+            WhatsApp Us →
+          </a>
+        </p>
+        <h4 style="margin-top:24px;">Explore</h4>
+        <p style="font-size:14px; display:flex; flex-direction:column; gap:6px;">
+          <a href={href('/collections')}>Collections</a>
+          <a href={href('/gallery')}>Gallery</a>
+          <a href={href('/reviews')}>Customer Reviews</a>
+          <a href={href('/about')}>About Us</a>
+          <a href={href('/contact')}>Contact</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>{site.footer.copyrightLine}</span>
+      <span>
+        Prices are estimates based on today's rates. Final price confirmed at store.
+      </span>
+      {site.footer.showOwnerLogin && (
+        <a class="owner-link" href="https://app.pagescms.org" target="_blank" rel="noopener">Owner Login</a>
+      )}
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,150 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { getCategories, getProducts, resolveCategory } from '../../lib/content';
+import { href, asset } from '../../lib/urls';
+
+export async function getStaticPaths() {
+  const categories = await getCategories();
+  return categories.map((category) => ({ params: { slug: category.slug }, props: { category } }));
+}
+
+const { category } = Astro.props;
+const c = category.data;
+
+const all = await getProducts();
+const products = [];
+for (const p of all) {
+  const ref = p.data.category;
+  if (
+    ref === category.slug ||
+    ref.trim().toLowerCase() === c.name.trim().toLowerCase() ||
+    (await resolveCategory(ref))?.slug === category.slug
+  ) {
+    products.push(p);
+  }
+}
+
+const purities = [...new Set(products.map((p) => p.data.purity))];
+---
+
+<Base title={c.name} description={c.description || `${c.name} at Vardhman Jewellers, Jammu`} ogImage={c.coverImage}>
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href={href('/collections')}>Collections</a> / <a href={href(`/collections/${c.group}`)}>{c.group}</a> / {c.name}
+    </div>
+    <div class="page-head">
+      <h1>{c.name}</h1>
+      {c.description && <p>{c.description}</p>}
+    </div>
+
+    {products.length > 1 && (
+      <div class="filters" id="filters" style="margin-top:28px;">
+        <div>
+          <label for="f-purity">Purity</label>
+          <select id="f-purity">
+            <option value="">All</option>
+            {purities.map((p) => <option value={p}>{p}</option>)}
+          </select>
+        </div>
+        <div>
+          <label for="f-price-min">Min Price (₹)</label>
+          <input id="f-price-min" type="number" min="0" placeholder="0" />
+        </div>
+        <div>
+          <label for="f-price-max">Max Price (₹)</label>
+          <input id="f-price-max" type="number" min="0" placeholder="Any" />
+        </div>
+        <div>
+          <label for="f-weight">Max Weight (g)</label>
+          <input id="f-weight" type="number" min="0" step="0.1" placeholder="Any" />
+        </div>
+        <div>
+          <label for="f-avail">Availability</label>
+          <select id="f-avail">
+            <option value="">All</option>
+            <option value="available">Available</option>
+            <option value="made-to-order">Made to Order</option>
+            <option value="sold">Sold</option>
+          </select>
+        </div>
+        <div>
+          <label for="f-occ">Wedding / Everyday</label>
+          <select id="f-occ">
+            <option value="">All</option>
+            <option value="wedding">Wedding</option>
+            <option value="everyday">Everyday</option>
+            <option value="traditional">Traditional</option>
+            <option value="festive">Festive</option>
+          </select>
+        </div>
+        <div>
+          <label for="f-sort">Sort By</label>
+          <select id="f-sort">
+            <option value="featured">Featured</option>
+            <option value="new">New Arrivals</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+    )}
+
+    <section class="section" style="padding-top:28px;">
+      <div class="grid" id="product-grid">
+        {products.map((p) => <ProductCard product={p} />)}
+      </div>
+      {products.length === 0 && (
+        <p class="empty-note">
+          New pieces are being added to this collection. Meanwhile,{' '}
+          <a href={href('/contact')} style="color:var(--gold-deep);">contact us</a> and we'll be happy to help.
+        </p>
+      )}
+      <p class="empty-note" id="no-results" style="display:none;">No products match the selected filters.</p>
+    </section>
+  </div>
+
+  <script>
+    const grid = document.getElementById('product-grid');
+    const noResults = document.getElementById('no-results');
+    const els = {
+      purity: document.getElementById('f-purity'),
+      min: document.getElementById('f-price-min'),
+      max: document.getElementById('f-price-max'),
+      weight: document.getElementById('f-weight'),
+      avail: document.getElementById('f-avail'),
+      occ: document.getElementById('f-occ'),
+      sort: document.getElementById('f-sort'),
+    };
+
+    function apply() {
+      if (!grid) return;
+      const cards = [...grid.querySelectorAll('.card')];
+      let visible = 0;
+      for (const card of cards) {
+        const price = parseFloat(card.dataset.price || '') || null;
+        let ok = true;
+        if (els.purity?.value && card.dataset.purity !== els.purity.value) ok = false;
+        if (els.min?.value && (price === null || price < +els.min.value)) ok = false;
+        if (els.max?.value && (price === null || price > +els.max.value)) ok = false;
+        if (els.weight?.value && parseFloat(card.dataset.weight || '0') > +els.weight.value) ok = false;
+        if (els.avail?.value && card.dataset.availability !== els.avail.value) ok = false;
+        if (els.occ?.value && card.dataset.occasion !== els.occ.value) ok = false;
+        card.style.display = ok ? '' : 'none';
+        if (ok) visible++;
+      }
+      // sorting
+      const sortVal = els.sort?.value;
+      const visibleCards = cards.filter((c) => c.style.display !== 'none');
+      const score = (c) => parseFloat(c.dataset.price || '') || Infinity;
+      if (sortVal === 'price-asc') visibleCards.sort((a, b) => score(a) - score(b));
+      if (sortVal === 'price-desc') visibleCards.sort((a, b) => score(b) - score(a));
+      if (sortVal === 'new') visibleCards.sort((a, b) => (b.dataset.new === 'true') - (a.dataset.new === 'true'));
+      if (sortVal === 'featured') visibleCards.sort((a, b) => (b.dataset.featured === 'true') - (a.dataset.featured === 'true'));
+      visibleCards.forEach((c) => grid.appendChild(c));
+      if (noResults) noResults.style.display = visible === 0 ? '' : 'none';
+    }
+
+    Object.values(els).forEach((el) => el?.addEventListener('input', apply));
+  </script>
+</Base>

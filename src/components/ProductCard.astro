@@ -1,0 +1,49 @@
+---
+import type { Product } from '../lib/content';
+import { computePrice, describeMakingCharges } from '../lib/pricing';
+import { formatINR, formatWeight } from '../lib/format';
+import { href, asset } from '../lib/urls';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const d = product.data;
+const price = computePrice(d);
+const productUrl = href(`/product/${product.slug}`);
+
+const availBadge =
+  d.availability === 'sold'
+    ? '<span class="badge sold">Sold</span>'
+    : d.availability === 'made-to-order'
+      ? '<span class="badge order">Made to Order</span>'
+      : '';
+---
+
+<article class="card" data-price={price.available ? price.total : ''} data-purity={d.purity}
+  data-weight={d.netGoldWeight} data-availability={d.availability} data-occasion={d.occasion}
+  data-new={d.newArrival} data-featured={d.featured}>
+  <a href={productUrl} class="thumb">
+    <img src={asset(d.photos[0])} alt={`${d.name} — ${d.purity} ${d.metal}`} loading="lazy" width="600" height="600" />
+  </a>
+  <div class="card-body">
+    <div>
+      {d.newArrival && <span class="badge">New</span>}
+      {d.bestseller && <span class="badge">Bestseller</span>}
+      <Fragment set:html={availBadge} />
+      {d.demo && <span class="badge demo">Demo</span>}
+    </div>
+    <h3><a href={productUrl}>{d.name}</a></h3>
+    <div class="card-meta">
+      <span>{d.purity}</span>
+      {d.netGoldWeight > 0 && <span>{formatWeight(d.netGoldWeight)}</span>}
+      <span>Making: {describeMakingCharges(d)}</span>
+    </div>
+    <div class="card-price">
+      {price.available
+        ? <>{formatINR(price.total)}{price.overridden && <small style="font-size:11px;color:var(--taupe);"> (fixed price)</small>}</>
+        : <span class="on-request">Price on Request</span>}
+    </div>
+  </div>
+</article>

@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+
+const addr = site.address;
+const addressLine = [addr.line1, addr.line2, `${addr.city}, ${addr.state} ${addr.pincode}`, addr.country]
+  .filter(Boolean)
+  .join(', ');
+const waUrl = `https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(`Hello ${site.businessName}, I have an enquiry.`)}`;
+---
+
+<Base title="Contact" description={`Contact ${site.businessName}, ${addr.city} — phone, WhatsApp, directions and opening hours.`}>
+  <div class="container">
+    <div class="page-head">
+      <h1>Contact Us</h1>
+      <p>We would love to help you find the perfect piece. Reach us on phone, WhatsApp or visit our showroom.</p>
+    </div>
+
+    <section class="section" style="padding-top:36px;">
+      <div class="split">
+        <div>
+          <ul class="info-list">
+            <li>
+              <b>Showroom Address</b>
+              {addressLine}
+              {site.googleMapsUrl && (
+                <>
+                  <br />
+                  <a href={site.googleMapsUrl} target="_blank" rel="noopener" style="color:var(--gold-deep);">
+                    Get Directions on Google Maps →
+                  </a>
+                </>
+              )}
+            </li>
+            <li>
+              <b>Phone</b>
+              <a href={`tel:${site.contact.phonePrimary.replace(/\s/g, '')}`}>{site.contact.phonePrimary}</a>
+              {site.contact.phoneSecondary && (
+                <>
+                  {' · '}
+                  <a href={`tel:${site.contact.phoneSecondary.replace(/\s/g, '')}`}>{site.contact.phoneSecondary}</a>
+                </>
+              )}
+            </li>
+            <li>
+              <b>WhatsApp</b>
+              <a href={`https://wa.me/${site.contact.whatsapp}`} target="_blank" rel="noopener" style="color:var(--gold-deep);">
+                Message us on WhatsApp →
+              </a>
+            </li>
+            {site.contact.email && (
+              <li><b>Email</b><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></li>
+            )}
+            <li>
+              <b>Opening Hours</b>
+              {site.hours.openingTime} – {site.hours.closingTime}<br />
+              {site.hours.weeklyHolidays}
+              {site.hours.specialNote && (
+                <>
+                  <br />
+                  <span style="font-size:13px; color:var(--taupe);">{site.hours.specialNote}</span>
+                </>
+              )}
+            </li>
+            <li>
+              <b>Follow Us</b>
+              {site.social.instagramUrl && (
+                <a href={site.social.instagramUrl} target="_blank" rel="noopener">
+                  Instagram {site.social.instagramUsername || ''}
+                </a>
+              )}
+              {site.social.instagramUrl && site.social.facebookUrl && ' · '}
+              {site.social.facebookUrl && (
+                <a href={site.social.facebookUrl} target="_blank" rel="noopener">Facebook</a>
+              )}
+            </li>
+          </ul>
+        </div>
+
+        <div class="price-box" style="margin:0; align-self:start;">
+          <h3 style="font-size:24px; margin-bottom:12px;">Send an Enquiry</h3>
+          <p style="font-size:14px; color:var(--taupe); margin-bottom:18px;">
+            Tap below to start a WhatsApp chat with us — tell us what you're looking for and we'll respond with designs, weights and today's rates.
+          </p>
+          <div class="cta-row" style="margin:0;">
+            <a class="btn btn-solid" href={waUrl} target="_blank" rel="noopener">WhatsApp Us</a>
+            <a class="btn btn-dark" href={`tel:${site.contact.phonePrimary.replace(/\s/g, '')}`}>Call Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>

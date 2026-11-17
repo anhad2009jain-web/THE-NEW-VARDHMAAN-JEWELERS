@@ -1,0 +1,21 @@
+---
+import type { Category } from '../lib/content';
+import { href, asset } from '../lib/urls';
+
+interface Props {
+  category: Category;
+}
+
+const { category } = Astro.props;
+const c = category.data;
+---
+
+<article class="card">
+  <a href={href(`/category/${category.slug}`)} class="thumb">
+    <img src={asset(c.coverImage)} alt={c.name} loading="lazy" width="600" height="600" />
+  </a>
+  <div class="card-body">
+    <h3><a href={href(`/category/${category.slug}`)}>{c.name}</a></h3>
+    {c.description && <p style="font-size:13.5px; color:var(--taupe);">{c.description}</p>}
+  </div>
+</article>

@@ -1,0 +1,58 @@
+---
+import site from '../data/site.json';
+import { href, asset } from '../lib/urls';
+
+const nav = [
+  { label: 'Home', url: '/' },
+  { label: site.groupLabels.wedding.label, url: '/collections/wedding' },
+  { label: site.groupLabels.everyday.label, url: '/collections/everyday' },
+  { label: site.groupLabels.gold.label, url: '/collections/gold' },
+  { label: site.groupLabels.diamond.label, url: '/collections/diamond' },
+  { label: site.groupLabels.silver.label, url: '/collections/silver' },
+  { label: 'Collections', url: '/collections' },
+  { label: 'Gallery', url: '/gallery' },
+  { label: 'Reviews', url: '/reviews' },
+  { label: 'About Us', url: '/about' },
+  { label: 'Contact', url: '/contact' },
+];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href={href('/')}>
+      {site.logo && <img src={asset(site.logo)} alt={`${site.businessName} logo`} width="44" height="44" />}
+      <span>
+        <span class="brand-name">{site.businessName}</span>
+        {site.tagline && <span class="brand-tagline">{site.tagline}</span>}
+      </span>
+    </a>
+
+    <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+      {nav.map((item) => <a href={href(item.url)}>{item.label}</a>)}
+    </nav>
+
+    <div class="header-icons">
+      <a href={href('/search')} aria-label="Search" title="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </a>
+      <a
+        href={`https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(`Hello ${site.businessName}, I would like to enquire about your jewellery.`)}`}
+        target="_blank" rel="noopener" aria-label="WhatsApp enquiry" title="WhatsApp"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.4A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('main-nav');
+  toggle?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+</script>

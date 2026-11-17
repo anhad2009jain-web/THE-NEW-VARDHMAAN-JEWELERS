@@ -1,0 +1,73 @@
+{
+  "hero": {
+    "images": [
+      "/uploads/banners/hero-1.svg"
+    ],
+    "headline": "Elegance That Becomes Your Legacy.",
+    "subheading": "Discover timeless craftsmanship, exquisite designs and jewellery made for life's most meaningful moments.",
+    "primaryButtonLabel": "Explore Collections",
+    "primaryButtonLink": "/collections",
+    "secondaryButtonLabel": "Discover Wedding Jewellery",
+    "secondaryButtonLink": "/collections/wedding"
+  },
+  "promoText": "BIS hallmarked gold jewellery • Transparent per-gram pricing • Wedding and everyday collections",
+  "sections": {
+    "showFeaturedWedding": true,
+    "showEveryday": true,
+    "showGold": true,
+    "showDiamond": true,
+    "showTraditional": true,
+    "showNewArrivals": true,
+    "showBestsellers": true,
+    "showCraftsmanship": true,
+    "showWhyUs": true,
+    "showTestimonials": true,
+    "showReviews": true,
+    "showVisitStore": true,
+    "showGallery": true
+  },
+  "featuredProductIds": [
+    "VJ-GB-001",
+    "VJ-GN-001",
+    "VJ-DR-001",
+    "VJ-SA-001"
+  ],
+  "newArrivalsHeading": "New Arrivals",
+  "bestsellersHeading": "Bestselling Designs",
+  "reviewsHeading": "What Our Customers Say",
+  "craftsmanship": {
+    "heading": "Our Craftsmanship",
+    "text": "Each article at Vardhman Jewellers is finished by experienced karigars and checked for purity and hallmark before it reaches our showroom floor.",
+    "image": "/uploads/banners/craftsmanship.svg"
+  },
+  "whyUs": {
+    "heading": "Why Vardhman Jewellers",
+    "points": [
+      {
+        "title": "BIS Hallmarked",
+        "text": "Every gold article carries a BIS hallmark with HUID wherever applicable."
+      },
+      {
+        "title": "Transparent Pricing",
+        "text": "Per-gram gold value, making charges and taxes are shown clearly for every piece."
+      },
+      {
+        "title": "Wedding Specialists",
+        "text": "Complete bridal sets curated for Jammu's wedding traditions."
+      },
+      {
+        "title": "Family Trust",
+        "text": "A neighbourhood jewellery house serving families across Talab Tillo and Jammu."
+      }
+    ]
+  },
+  "visitStore": {
+    "heading": "Visit Our Store",
+    "text": "Experience our collections in person. Walk in for a cup of tea and an unhurried look at our jewellery."
+  },
+  "seo": {
+    "title": "Vardhman Jewellers, Talab Tillo, Jammu — Gold, Diamond & Silver Jewellery",
+    "description": "Vardhman Jewellers in Talab Tillo, Jammu offers BIS hallmarked gold jewellery, diamond jewellery, silver articles and complete wedding collections with transparent per-gram pricing.",
+    "ogImage": "/uploads/banners/hero-1.svg"
+  }
+}

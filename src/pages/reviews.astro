@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+import site from '../data/site.json';
+import { getReviews } from '../lib/content';
+
+const reviews = await getReviews();
+const avg = reviews.length
+  ? (reviews.reduce((sum, r) => sum + r.data.rating, 0) / reviews.length).toFixed(1)
+  : null;
+const waUrl = `https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(`Hello ${site.businessName}, I read your reviews and would like to know more about your jewellery.`)}`;
+---
+
+<Base title="Customer Reviews" description={`Customer reviews for ${site.businessName}, Jammu.`}>
+  <div class="container">
+    <div class="page-head">
+      <h1>Customer Reviews</h1>
+      <p>
+        What our customers say about us.
+        {avg && <> Average rating: <strong style="color:var(--gold-deep);">{avg} ★</strong> from {reviews.length} review{reviews.length === 1 ? '' : 's'}.</>}
+      </p>
+    </div>
+
+    <section class="section" style="padding-top:32px;">
+      {reviews.length > 0 ? (
+        <div class="grid cols-3">
+          {reviews.map((r) => <ReviewCard review={r} />)}
+        </div>
+      ) : (
+        <p class="empty-note">Reviews are coming soon. Visit our showroom to experience our jewellery in person.</p>
+      )}
+
+      <div class="text-center mt-40">
+        <p style="color:var(--taupe); margin-bottom:18px;">Shopped with us recently? We'd love to hear about your experience.</p>
+        <a class="btn btn-solid" href={waUrl} target="_blank" rel="noopener">Share Feedback on WhatsApp</a>
+      </div>
+    </section>
+  </div>
+</Base>

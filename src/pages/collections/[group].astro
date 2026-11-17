@@ -1,0 +1,69 @@
+---
+import Base from '../../layouts/Base.astro';
+import CategoryCard from '../../components/CategoryCard.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import site from '../../data/site.json';
+import { getCategories, getProducts, resolveCategory } from '../../lib/content';
+import { href } from '../../lib/urls';
+
+export function getStaticPaths() {
+  return [
+    { params: { group: 'wedding' } },
+    { params: { group: 'everyday' } },
+    { params: { group: 'gold' } },
+    { params: { group: 'diamond' } },
+    { params: { group: 'silver' } },
+  ];
+}
+
+const { group } = Astro.params as { group: keyof typeof site.groupLabels };
+const groupInfo = site.groupLabels[group];
+const label = groupInfo.heading;
+const intro = groupInfo.description;
+
+const categories = (await getCategories()).filter((c) => c.data.group === group);
+const catRefs = new Set(categories.map((c) => c.slug));
+const catNames = new Set(categories.map((c) => c.data.name.trim().toLowerCase()));
+
+const allProducts = await getProducts();
+const products = [];
+for (const p of allProducts) {
+  const ref = p.data.category;
+  if (catRefs.has(ref) || catNames.has(ref.trim().toLowerCase())) products.push(p);
+}
+const featured = products.filter((p) => p.data.featured).slice(0, 8);
+---
+
+<Base title={label} description={intro}>
+  <div class="container">
+    <div class="breadcrumbs"><a href={href('/collections')}>Collections</a> / {label}</div>
+    <div class="page-head">
+      <h1>{label}</h1>
+      <p>{intro}</p>
+    </div>
+
+    {categories.length > 0 && (
+      <section class="section" style="padding-bottom:20px;">
+        <div class="grid cols-3">
+          {categories.map((c) => <CategoryCard category={c} />)}
+        </div>
+      </section>
+    )}
+
+    {featured.length > 0 && (
+      <section class="section" style="padding-top:20px;">
+        <div class="section-head" style="text-align:left;">
+          <h2>Featured Pieces</h2>
+          <div class="rule" style="margin-left:0;"></div>
+        </div>
+        <div class="grid">
+          {featured.map((p) => <ProductCard product={p} />)}
+        </div>
+      </section>
+    )}
+
+    {categories.length === 0 && products.length === 0 && (
+      <p class="empty-note">This collection is being curated. Please check back soon or visit our showroom.</p>
+    )}
+  </div>
+</Base>

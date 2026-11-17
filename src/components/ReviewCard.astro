@@ -1,0 +1,25 @@
+---
+import type { Review } from '../lib/content';
+
+interface Props {
+  review: Review;
+}
+
+const { review } = Astro.props;
+const r = review.data;
+const stars = '★'.repeat(r.rating) + '☆'.repeat(Math.max(0, 5 - r.rating));
+---
+
+<div class="testimonial">
+  <div class="stars" aria-label={`${r.rating} out of 5 stars`}>{stars}</div>
+  {r.title && <h3 style="font-size:20px;">{r.title}</h3>}
+  <blockquote>“{r.review}”</blockquote>
+  {r.productName && (
+    <p style="font-size:12.5px; color:var(--gold-deep); letter-spacing:.06em; text-transform:uppercase;">
+      Purchased: {r.productName}
+    </p>
+  )}
+  <div class="who">
+    {r.customerName}{r.location && ` · ${r.location}`}{r.date && ` · ${r.date}`}
+  </div>
+</div>

@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+import { href, asset } from '../lib/urls';
+
+const about = site.about;
+const paragraphs = (about.description || '').split(/\n{2,}/).filter(Boolean);
+---
+
+<Base title="About Us" description={about.shortIntro || `About ${site.businessName}`} ogImage={about.photo}>
+  <div class="container">
+    <div class="page-head">
+      <h1>{about.heading || 'About Us'}</h1>
+      {about.shortIntro && <p>{about.shortIntro}</p>}
+    </div>
+
+    <section class="section" style="padding-top:36px;">
+      <div class="split">
+        <div>
+          {paragraphs.map((para) => (
+            <p style="margin-bottom:18px; color:var(--taupe); max-width:60ch;">{para}</p>
+          ))}
+          <div class="cta-row">
+            <a class="btn btn-dark" href={href('/collections')}>Explore Collections</a>
+            <a class="btn btn-solid" href={href('/contact')}>Contact Us</a>
+          </div>
+        </div>
+        <div>
+          {about.photo && (
+            <img src={asset(about.photo)} alt={about.heading || site.businessName} loading="lazy" width="1400" height="900" />
+          )}
+        </div>
+      </div>
+    </section>
+
+    {about.interiorPhotos.length > 0 && (
+      <section class="section alt" style="padding-left:0; padding-right:0;">
+        <div class="section-head">
+          <h2>Inside Our Showroom</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="grid cols-3 album-grid">
+          {about.interiorPhotos.map((photo, i) => (
+            <img src={asset(photo)} alt={`${site.businessName} showroom interior ${i + 1}`} loading="lazy" width="1200" height="1200" />
+          ))}
+        </div>
+      </section>
+    )}
+
+    {about.exteriorPhotos.length > 0 && (
+      <section class="section" style="padding-left:0; padding-right:0;">
+        <div class="section-head">
+          <h2>Visit Us</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="grid cols-3 album-grid">
+          {about.exteriorPhotos.map((photo, i) => (
+            <img src={asset(photo)} alt={`${site.businessName} showroom exterior ${i + 1}`} loading="lazy" width="1200" height="1200" />
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+</Base>

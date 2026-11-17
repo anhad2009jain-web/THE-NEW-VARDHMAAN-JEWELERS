@@ -1,0 +1,44 @@
+---
+import Base from '../../layouts/Base.astro';
+import CategoryCard from '../../components/CategoryCard.astro';
+import site from '../../data/site.json';
+import { getCategories } from '../../lib/content';
+
+const categories = await getCategories();
+const groups = [
+  { key: 'wedding', label: site.groupLabels.wedding.heading },
+  { key: 'everyday', label: site.groupLabels.everyday.heading },
+  { key: 'gold', label: site.groupLabels.gold.heading },
+  { key: 'diamond', label: site.groupLabels.diamond.heading },
+  { key: 'silver', label: site.groupLabels.silver.heading },
+] as const;
+---
+
+<Base title="Collections" description="Browse all jewellery collections — wedding, everyday, gold, diamond and silver.">
+  <div class="container">
+    <div class="page-head">
+      <h1>Collections</h1>
+      <p>Explore our jewellery albums. Each collection opens its own gallery of handcrafted pieces.</p>
+    </div>
+
+    {groups.map((g) => {
+      const cats = categories.filter((c) => c.data.group === g.key);
+      if (cats.length === 0) return null;
+      return (
+        <section class="section" style="padding-bottom:24px;">
+          <div class="section-head" style="text-align:left;">
+            <h2>{g.label}</h2>
+            <div class="rule" style="margin-left:0;"></div>
+          </div>
+          <div class="grid">
+            {cats.map((c) => <CategoryCard category={c} />)}
+          </div>
+        </section>
+      );
+    })}
+
+    {categories.length === 0 && (
+      <p class="empty-note">Collections are being curated. Please visit our showroom or check back soon.</p>
+    )}
+  </div>
+</Base>

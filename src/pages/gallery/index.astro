@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getAlbums } from '../../lib/content';
+import { href, asset } from '../../lib/urls';
+
+const albums = await getAlbums();
+---
+
+<Base title="Gallery" description="Photographs from Vardhman Jewellers — collections, showroom and wedding highlights.">
+  <div class="container">
+    <div class="page-head">
+      <h1>Gallery</h1>
+      <p>Browse our jewellery albums and showroom photographs.</p>
+    </div>
+
+    <section class="section" style="padding-top:32px;">
+      {albums.length > 0 ? (
+        <div class="grid cols-3 album-grid">
+          {albums.map((a) => (
+            <article class="card">
+              <a href={href(`/gallery/${a.slug}`)} class="thumb" style="aspect-ratio:4/3;">
+                <img src={asset(a.data.coverImage)} alt={a.data.name} loading="lazy" width="800" height="600" />
+              </a>
+              <div class="card-body">
+                <h3><a href={href(`/gallery/${a.slug}`)}>{a.data.name}</a></h3>
+                {a.data.description && <p style="font-size:13.5px; color:var(--taupe);">{a.data.description}</p>}
+                <p style="font-size:12px; color:var(--taupe); letter-spacing:.1em; text-transform:uppercase;">
+                  {a.data.images.length} photographs
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p class="empty-note">Albums are being curated. Please visit our showroom to see the collections in person.</p>
+      )}
+    </section>
+  </div>
+</Base>

@@ -1,0 +1,79 @@
+{
+  "businessName": "Vardhman Jewellers",
+  "tagline": "The New Vardhman Jewellers",
+  "logo": "/uploads/brand/logo.svg",
+  "favicon": "/favicon.svg",
+  "contact": {
+    "phonePrimary": "+91 90000 00001",
+    "phoneSecondary": "+91 90000 00002",
+    "whatsapp": "919000000001",
+    "email": "hello@example.com"
+  },
+  "address": {
+    "line1": "Main Market, Talab Tillo",
+    "line2": "Near Talab Tillo Chowk",
+    "city": "Jammu",
+    "state": "Jammu & Kashmir",
+    "pincode": "180002",
+    "country": "India"
+  },
+  "googleMapsUrl": "https://maps.google.com/?q=Talab+Tillo,+Jammu",
+  "social": {
+    "instagramUrl": "https://www.instagram.com/vardhmanjewellers",
+    "instagramUsername": "@vardhmanjewellers",
+    "facebookUrl": "https://www.facebook.com/vardhmanjewellers"
+  },
+  "hours": {
+    "openingTime": "10:30 AM",
+    "closingTime": "8:30 PM",
+    "weeklyHolidays": "Open all seven days",
+    "specialNote": "Timings may vary on festivals — please call before visiting."
+  },
+  "about": {
+    "heading": "A Jewellery House Built on Trust",
+    "shortIntro": "Fine gold, diamond and silver jewellery from the heart of Jammu.",
+    "description": "Vardhman Jewellers is a family-run jewellery house in Talab Tillo, Jammu, serving generations of families with hallmarked gold, certified diamond and fine silver jewellery.\n\nEvery piece in our showroom is selected for its craftsmanship and purity. We believe jewellery is not merely an ornament — it is a memory, an investment and a blessing that passes from one generation to the next.\n\nVisit our showroom to experience our wedding and everyday collections in person. Our team will gladly walk you through purity, hallmarking and transparent pricing for every article.",
+    "photo": "/uploads/about/showroom.svg",
+    "interiorPhotos": [
+      "/uploads/about/interior-1.svg",
+      "/uploads/about/interior-2.svg"
+    ],
+    "exteriorPhotos": [
+      "/uploads/about/exterior-1.svg"
+    ]
+  },
+  "groupLabels": {
+    "wedding": {
+      "label": "Wedding Collection",
+      "heading": "Wedding & Bridal Collection",
+      "description": "Complete bridal sets, chokers, rani haar and heritage pieces for your wedding day."
+    },
+    "everyday": {
+      "label": "Everyday Jewellery",
+      "heading": "Everyday & Casual Jewellery",
+      "description": "Lightweight designs made for daily wear — comfortable, durable and elegant."
+    },
+    "gold": {
+      "label": "Gold Jewellery",
+      "heading": "Gold Jewellery",
+      "description": "BIS hallmarked gold jewellery across rings, necklaces, bangles, mangalsutras and more."
+    },
+    "diamond": {
+      "label": "Diamond Jewellery",
+      "heading": "Diamond Jewellery",
+      "description": "Certified diamond jewellery set in hallmarked gold."
+    },
+    "silver": {
+      "label": "Silver Jewellery",
+      "heading": "Silver Jewellery",
+      "description": "Fine silver anklets, articles and gifts."
+    }
+  },
+  "footer": {
+    "aboutBlurb": "Hallmarked gold, certified diamond and fine silver jewellery in Talab Tillo, Jammu.",
+    "copyrightLine": "© Vardhman Jewellers, Jammu. All rights reserved.",
+    "showOwnerLogin": true
+  },
+  "demoMode": true,
+  "demoNotice": "Demonstration content — replace with your own business details in Pages CMS."
+}
