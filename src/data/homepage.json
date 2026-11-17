@@ -1,7 +1,7 @@
 {
   "hero": {
     "images": [
-      "/uploads/banners/hero-1.svg"
+      "/uploads/TNVJ-3.jpeg"
     ],
     "headline": "Elegance That Becomes Your Legacy.",
     "subheading": "Discover timeless craftsmanship, exquisite designs and jewellery made for life's most meaningful moments.",
@@ -37,7 +37,7 @@
   "reviewsHeading": "What Our Customers Say",
   "craftsmanship": {
     "heading": "Our Craftsmanship",
-    "text": "Each article at Vardhman Jewellers is finished by experienced karigars and checked for purity and hallmark before it reaches our showroom floor.",
+    "text": "Each article at the new Vardhman Jewellers is finished by experienced karigars and checked for purity and hallmark before it reaches our showroom floor.",
     "image": "/uploads/banners/craftsmanship.svg"
   },
   "whyUs": {
@@ -66,8 +66,8 @@
     "text": "Experience our collections in person. Walk in for a cup of tea and an unhurried look at our jewellery."
   },
   "seo": {
-    "title": "Vardhman Jewellers, Talab Tillo, Jammu — Gold, Diamond & Silver Jewellery",
-    "description": "Vardhman Jewellers in Talab Tillo, Jammu offers BIS hallmarked gold jewellery, diamond jewellery, silver articles and complete wedding collections with transparent per-gram pricing.",
-    "ogImage": "/uploads/banners/hero-1.svg"
+    "title": " THE NEW Vardhman Jewellers, Talab Tillo, Jammu — Gold, Diamond & Silver Jewellery",
+    "description": "THE NEW Vardhman Jewellers in Talab Tillo, Jammu offers BIS hallmarked gold jewellery, diamond jewellery, silver articles and complete wedding collections with transparent per-gram pricing.",
+    "ogImage": "/uploads/TNVJ-4.jpeg"
   }
 }
