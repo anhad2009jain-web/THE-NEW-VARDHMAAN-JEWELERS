@@ -1,0 +1,745 @@
+# ============================================================================
+# Pages CMS configuration — Vardhman Jewellers, Jammu
+# Docs: https://pagescms.org/docs/configuration/
+#
+# Everything the website displays is edited here. Nothing is hardcoded in the
+# frontend: business details, gold rates, products, gallery, testimonials,
+# homepage banners and About Us content all live in these files.
+# After saving in Pages CMS, GitHub Actions rebuilds and deploys the site.
+# ============================================================================
+
+media:
+  input: public/uploads
+  output: /uploads
+
+content:
+  # --------------------------------------------------------------------------
+  # 1. BUSINESS INFORMATION
+  # --------------------------------------------------------------------------
+  - name: business
+    label: Business Information
+    type: file
+    path: src/data/site.json
+    description: Business identity, contact details, hours, About Us, branding and footer content.
+    fields:
+      - name: businessName
+        label: Business Name
+        type: string
+        required: true
+        description: Shown in the header, footer and page titles everywhere on the website.
+      - name: tagline
+        label: Tagline
+        type: string
+        description: Short line shown under the business name (e.g. "The New Vardhman Jewellers").
+      - name: logo
+        label: Brand Logo
+        type: image
+        description: Used in the website header and footer.
+        options:
+          path: brand
+      - name: favicon
+        label: Favicon
+        type: image
+        description: Small browser-tab icon (square image works best).
+        options:
+          path: brand
+
+      - name: contact
+        label: Phone, WhatsApp & Email
+        type: object
+        fields:
+          - name: phonePrimary
+            label: Primary Phone Number
+            type: string
+            required: true
+            description: Shown on Contact page, product pages and footer. Used by "Call Store" buttons.
+          - name: phoneSecondary
+            label: Secondary Phone Number
+            type: string
+          - name: whatsapp
+            label: WhatsApp Number
+            type: string
+            required: true
+            description: Country code + number, digits only (e.g. 919876543210). Used by all "Enquire on WhatsApp" buttons.
+          - name: email
+            label: Email Address
+            type: string
+
+      - name: address
+        label: Shop Address
+        type: object
+        fields:
+          - name: line1
+            label: Address Line 1
+            type: string
+          - name: line2
+            label: Address Line 2
+            type: string
+          - name: city
+            label: City
+            type: string
+          - name: state
+            label: State
+            type: string
+          - name: pincode
+            label: PIN Code
+            type: string
+          - name: country
+            label: Country
+            type: string
+
+      - name: googleMapsUrl
+        label: Google Maps Location URL
+        type: string
+        description: Paste the share link from Google Maps. Used by "Get Directions" buttons.
+
+      - name: social
+        label: Social Media
+        type: object
+        fields:
+          - name: instagramUrl
+            label: Instagram Profile URL
+            type: string
+          - name: instagramUsername
+            label: Instagram Username
+            type: string
+            description: Shown as text, e.g. @vardhmanjewellers
+          - name: facebookUrl
+            label: Facebook URL
+            type: string
+
+      - name: hours
+        label: Opening Hours & Holidays
+        type: object
+        fields:
+          - name: openingTime
+            label: Opening Time
+            type: string
+            description: e.g. 10:30 AM
+          - name: closingTime
+            label: Closing Time
+            type: string
+            description: e.g. 8:30 PM
+          - name: weeklyHolidays
+            label: Weekly Holidays
+            type: string
+            description: e.g. "Closed on Mondays" or "Open all seven days"
+          - name: specialNote
+            label: Special Note
+            type: string
+            description: Optional note shown with the timings (festival hours etc.)
+
+      - name: about
+        label: About Us
+        type: object
+        fields:
+          - name: heading
+            label: About Us Heading
+            type: string
+          - name: shortIntro
+            label: Short Introduction
+            type: string
+            description: One-line summary shown on the homepage and About page.
+          - name: description
+            label: Complete About Us Description
+            type: text
+            description: Full About Us text shown on the About page.
+          - name: photo
+            label: About Us Photograph
+            type: image
+            options:
+              path: about
+          - name: interiorPhotos
+            label: Shop Interior Photographs
+            type: image
+            options:
+              multiple: true
+              path: about
+          - name: exteriorPhotos
+            label: Shop Exterior Photographs
+            type: image
+            options:
+              multiple: true
+              path: about
+
+      - name: groupLabels
+        label: Jewellery Section Names
+        type: object
+        description: Rename the jewellery sections shown in the navigation, homepage and collection pages. Renames apply website-wide.
+        fields:
+          - name: wedding
+            label: Wedding Section
+            type: object
+            fields:
+              - { name: label, label: Menu Name, type: string }
+              - { name: heading, label: Page Heading, type: string }
+              - { name: description, label: Page Description, type: text }
+          - name: everyday
+            label: Everyday Section
+            type: object
+            fields:
+              - { name: label, label: Menu Name, type: string }
+              - { name: heading, label: Page Heading, type: string }
+              - { name: description, label: Page Description, type: text }
+          - name: gold
+            label: Gold Section
+            type: object
+            fields:
+              - { name: label, label: Menu Name, type: string }
+              - { name: heading, label: Page Heading, type: string }
+              - { name: description, label: Page Description, type: text }
+          - name: diamond
+            label: Diamond Section
+            type: object
+            fields:
+              - { name: label, label: Menu Name, type: string }
+              - { name: heading, label: Page Heading, type: string }
+              - { name: description, label: Page Description, type: text }
+          - name: silver
+            label: Silver Section
+            type: object
+            fields:
+              - { name: label, label: Menu Name, type: string }
+              - { name: heading, label: Page Heading, type: string }
+              - { name: description, label: Page Description, type: text }
+
+      - name: footer
+        label: Footer Information
+        type: object
+        fields:
+          - name: aboutBlurb
+            label: Footer About Text
+            type: text
+          - name: copyrightLine
+            label: Copyright Line
+            type: string
+          - name: showOwnerLogin
+            label: Show "Owner Login" Link
+            type: boolean
+            description: Displays a discreet Owner Login link (to Pages CMS) in the footer.
+
+      - name: demoMode
+        label: Demo Mode
+        type: boolean
+        description: While ON, a small "demo content" notice is shown. Turn OFF after entering real content.
+      - name: demoNotice
+        label: Demo Notice Text
+        type: string
+
+  # --------------------------------------------------------------------------
+  # 2. HOMEPAGE CONTENT (banners, promo text, sections)
+  # --------------------------------------------------------------------------
+  - name: homepage
+    label: Homepage Content
+    type: file
+    path: src/data/homepage.json
+    description: Hero banners, promotional text, headings and homepage section visibility.
+    fields:
+      - name: hero
+        label: Homepage Banner (Hero)
+        type: object
+        fields:
+          - name: images
+            label: Homepage Banner Images
+            type: image
+            required: true
+            description: Wide campaign photographs. First image is the main banner.
+            options:
+              multiple:
+                max: 5
+              path: banners
+          - name: headline
+            label: Banner Headline
+            type: string
+          - name: subheading
+            label: Banner Subheading
+            type: text
+          - name: primaryButtonLabel
+            label: Primary Button Label
+            type: string
+          - name: primaryButtonLink
+            label: Primary Button Link
+            type: string
+            description: Internal link, e.g. /collections
+          - name: secondaryButtonLabel
+            label: Secondary Button Label
+            type: string
+          - name: secondaryButtonLink
+            label: Secondary Button Link
+            type: string
+
+      - name: promoText
+        label: Homepage Promotional Text
+        type: string
+        description: Slim highlight strip shown below the banner.
+
+      - name: sections
+        label: Homepage Section Visibility
+        type: object
+        description: Switch homepage sections on or off.
+        fields:
+          - { name: showFeaturedWedding, label: Featured Wedding Collection, type: boolean }
+          - { name: showEveryday, label: Everyday Elegance, type: boolean }
+          - { name: showGold, label: Gold Jewellery, type: boolean }
+          - { name: showDiamond, label: Diamond Jewellery, type: boolean }
+          - { name: showTraditional, label: Traditional Jewellery, type: boolean }
+          - { name: showNewArrivals, label: New Arrivals, type: boolean }
+          - { name: showBestsellers, label: Bestselling Designs, type: boolean }
+          - { name: showCraftsmanship, label: Our Craftsmanship, type: boolean }
+          - { name: showWhyUs, label: Why Vardhman Jewellers, type: boolean }
+          - { name: showTestimonials, label: Customer Testimonials, type: boolean }
+          - { name: showReviews, label: Customer Reviews, type: boolean }
+          - { name: showVisitStore, label: Visit Our Store, type: boolean }
+          - { name: showGallery, label: Gallery Albums, type: boolean }
+
+      - name: featuredProductIds
+        label: Featured Products on Homepage
+        type: string
+        list: true
+        description: Product IDs (e.g. VJ-GB-001) to feature on the homepage, in this order.
+
+      - name: newArrivalsHeading
+        label: New Arrivals Heading
+        type: string
+      - name: bestsellersHeading
+        label: Bestselling Designs Heading
+        type: string
+      - name: reviewsHeading
+        label: Reviews Section Heading
+        type: string
+
+      - name: craftsmanship
+        label: Our Craftsmanship Section
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: text, label: Text, type: text }
+          - name: image
+            label: Photograph
+            type: image
+            options:
+              path: banners
+
+      - name: whyUs
+        label: Why Vardhman Jewellers Section
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - name: points
+            label: Points
+            type: object
+            list:
+              min: 1
+              max: 6
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: text, label: Text, type: text }
+
+      - name: visitStore
+        label: Visit Our Store Section
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: text, label: Text, type: text }
+
+      - name: seo
+        label: Homepage SEO
+        type: object
+        fields:
+          - { name: title, label: Homepage Title (SEO), type: string }
+          - { name: description, label: Homepage Meta Description, type: text }
+          - name: ogImage
+            label: Social Share Image
+            type: image
+            options:
+              path: banners
+
+  # --------------------------------------------------------------------------
+  # 3. DAILY GOLD RATES
+  # --------------------------------------------------------------------------
+  - name: gold-rates
+    label: Daily Gold Rates
+    type: file
+    path: src/data/gold-rates.json
+    description: Today's gold rates. Every product price recalculates automatically when these change.
+    fields:
+      - name: rates
+        label: Gold Rates (₹ per gram)
+        type: object
+        required: true
+        fields:
+          - { name: 24K, label: 24K Gold (₹/g), type: number, required: true }
+          - { name: 22K, label: 22K Gold (₹/g), type: number, required: true }
+          - { name: 18K, label: 18K Gold (₹/g), type: number, required: true }
+          - { name: 14K, label: 14K Gold (₹/g), type: number }
+          - { name: 925 Silver, label: 925 Silver (₹/g), type: number }
+      - name: taxPercent
+        label: Tax Percentage
+        type: number
+        description: Applied on top of the subtotal (e.g. 3 for 3% GST). Confirm with your accountant.
+      - name: taxLabel
+        label: Tax Label
+        type: string
+        description: Shown next to the tax line, e.g. GST.
+      - name: maxRateAgeHours
+        label: Rates Expire After (hours)
+        type: number
+        description: If rates are older than this, products show "Price on Request" until rates are updated.
+      - name: updatedAt
+        label: Rates Last Updated
+        type: date
+        required: true
+        options:
+          time: true
+          format: yyyy-MM-dd'T'HH:mmxxx
+      - name: priceDisclaimer
+        label: Price Disclaimer Text
+        type: text
+      - name: demoMode
+        label: Demo Rates Notice
+        type: boolean
+        description: While ON, a notice reminds visitors these are demonstration rates.
+      - name: demoNotice
+        label: Demo Notice Text
+        type: string
+
+  # --------------------------------------------------------------------------
+  # 4. JEWELLERY PRODUCTS
+  # --------------------------------------------------------------------------
+  - name: products
+    label: Jewellery Products
+    type: collection
+    path: src/content/products
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      primary: name
+      sort: updatedAt
+      order: desc
+    fields:
+      - name: name
+        label: Product Name
+        type: string
+        required: true
+      - name: productId
+        label: Product ID
+        type: string
+        required: true
+        description: Unique code, e.g. VJ-GR-001. Used in WhatsApp enquiries.
+      - name: category
+        label: Jewellery Category
+        type: reference
+        required: true
+        options:
+          collection: categories
+          value: "{name}"
+          label: "{primary}"
+      - name: occasion
+        label: Occasion
+        type: select
+        options:
+          values: [everyday, wedding, traditional, festive]
+      - name: metal
+        label: Metal
+        type: select
+        required: true
+        options:
+          values: [gold, diamond, silver, platinum, other]
+      - name: purity
+        label: Purity
+        type: select
+        required: true
+        description: Determines which gold rate is used for price calculation.
+        options:
+          values: [24K, 22K, 18K, 14K, 925 Silver, N/A]
+      - name: photos
+        label: Product Photographs
+        type: image
+        required: true
+        description: First photograph is the main image. Add multiple angles.
+        options:
+          multiple:
+            max: 8
+          unique: true
+          path: products
+      - name: grossWeight
+        label: Gross Weight (grams)
+        type: number
+        required: true
+      - name: netGoldWeight
+        label: Net Gold Weight (grams)
+        type: number
+        required: true
+        description: Used with the gold rate to calculate gold value.
+      - name: stoneWeight
+        label: Stone Weight (grams)
+        type: number
+      - name: stonePrice
+        label: Stone Price (₹)
+        type: number
+      - name: makingChargeType
+        label: Making Charge Type
+        type: select
+        required: true
+        options:
+          values:
+            - { name: fixed, label: Fixed amount (₹) }
+            - { name: per-gram, label: Per gram (₹/g) }
+            - { name: percent, label: Percentage of gold value (%) }
+      - name: makingChargeValue
+        label: Making Charge Value
+        type: number
+        required: true
+        description: ₹ amount, ₹ per gram, or percentage — depending on the type above.
+      - name: wastagePercent
+        label: Wastage (%)
+        type: number
+      - name: otherCharges
+        label: Other Charges (₹)
+        type: number
+      - name: priceOverride
+        label: Manual Price Override (₹)
+        type: number
+        description: Optional. If set, this exact price is shown instead of the calculated price.
+      - name: bisHallmark
+        label: BIS Hallmarked
+        type: boolean
+      - name: huid
+        label: HUID Number
+        type: string
+        description: The article's actual HUID. Never invent one — leave empty if unavailable.
+      - name: hallmarkNote
+        label: Hallmark Note
+        type: string
+      - name: availability
+        label: Availability
+        type: select
+        required: true
+        options:
+          values:
+            - { name: available, label: Available }
+            - { name: sold, label: Sold }
+            - { name: made-to-order, label: Made to Order }
+      - name: featured
+        label: Featured Product
+        type: boolean
+      - name: newArrival
+        label: New Arrival
+        type: boolean
+      - name: bestseller
+        label: Bestseller
+        type: boolean
+      - name: shortDescription
+        label: Short Description
+        type: text
+      - name: body
+        label: Full Description
+        type: rich-text
+      - name: updatedAt
+        label: Last Updated
+        type: date
+        options:
+          format: yyyy-MM-dd
+      - name: demo
+        label: Demo Product
+        type: boolean
+        description: Marks this as demonstration content (not real inventory).
+
+  # --------------------------------------------------------------------------
+  # 5. JEWELLERY CATEGORIES (albums / collections)
+  # --------------------------------------------------------------------------
+  - name: categories
+    label: Jewellery Categories
+    type: collection
+    path: src/content/categories
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      primary: name
+      sort: order
+      order: asc
+    fields:
+      - name: name
+        label: Category Name
+        type: string
+        required: true
+      - name: group
+        label: Belongs To
+        type: select
+        required: true
+        options:
+          values:
+            - { name: gold, label: Gold Jewellery }
+            - { name: wedding, label: Wedding & Bridal }
+            - { name: everyday, label: Everyday Jewellery }
+            - { name: diamond, label: Diamond Jewellery }
+            - { name: silver, label: Silver Jewellery }
+      - name: description
+        label: Description
+        type: text
+      - name: coverImage
+        label: Cover Image
+        type: image
+        required: true
+        options:
+          path: categories
+      - name: order
+        label: Display Order
+        type: number
+        description: Lower numbers appear first.
+      - name: enabled
+        label: Visible on Website
+        type: boolean
+        description: Turn OFF to hide this category from customers without deleting it.
+
+  # --------------------------------------------------------------------------
+  # 6. GALLERY MANAGEMENT
+  # --------------------------------------------------------------------------
+  - name: albums
+    label: Gallery Management
+    type: collection
+    path: src/content/albums
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      primary: name
+      sort: order
+      order: asc
+    fields:
+      - name: name
+        label: Album Name
+        type: string
+        required: true
+      - name: description
+        label: Album Description
+        type: text
+      - name: coverImage
+        label: Album Cover
+        type: image
+        required: true
+        options:
+          path: gallery
+      - name: images
+        label: Photographs
+        type: object
+        description: Drag to reorder. The order here is the order shown on the website.
+        list:
+          collapsible:
+            collapsed: true
+            summary: "Photo {index}"
+        fields:
+          - name: src
+            label: Photograph
+            type: image
+            required: true
+            options:
+              path: gallery
+          - name: caption
+            label: Caption
+            type: string
+      - name: order
+        label: Display Order
+        type: number
+      - name: published
+        label: Published
+        type: boolean
+        description: Turn OFF to hide the entire album from the website.
+      - name: featuredOnHomepage
+        label: Feature on Homepage
+        type: boolean
+
+  # --------------------------------------------------------------------------
+  # 7. CUSTOMER TESTIMONIALS
+  # --------------------------------------------------------------------------
+  - name: testimonials
+    label: Customer Testimonials
+    type: collection
+    path: src/content/testimonials
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      primary: customerName
+      sort: order
+      order: asc
+    fields:
+      - name: customerName
+        label: Customer Name
+        type: string
+        required: true
+      - name: location
+        label: Location
+        type: string
+      - name: quote
+        label: Testimonial
+        type: text
+        required: true
+      - name: rating
+        label: Rating (1–5)
+        type: number
+      - name: order
+        label: Display Order
+        type: number
+      - name: published
+        label: Published
+        type: boolean
+
+  # --------------------------------------------------------------------------
+  # 8. CUSTOMER REVIEWS
+  # --------------------------------------------------------------------------
+  - name: reviews
+    label: Customer Reviews
+    type: collection
+    path: src/content/reviews
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      primary: title
+      sort: date
+      order: desc
+    fields:
+      - name: customerName
+        label: Customer Name
+        type: string
+        required: true
+      - name: location
+        label: Location
+        type: string
+      - name: rating
+        label: Star Rating (1–5)
+        type: number
+        required: true
+      - name: title
+        label: Review Title
+        type: string
+      - name: review
+        label: Review Text
+        type: text
+        required: true
+      - name: productName
+        label: Product Purchased (optional)
+        type: string
+        description: Shown with the review, e.g. "Royal 22K Gold Bangle".
+      - name: date
+        label: Review Date
+        type: date
+        options:
+          format: yyyy-MM-dd
+      - name: order
+        label: Display Order
+        type: number
+      - name: published
+        label: Published
+        type: boolean
+        description: Turn OFF to hide this review without deleting it.
+
+settings:
+  commit:
+    message: "Content update via Pages CMS"
