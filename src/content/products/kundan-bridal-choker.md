@@ -2,7 +2,7 @@
 name: gold wedding set
 productId: VJ-BC-001
 category: src/content/categories/bridal-chokers.md
-occassion: wedding
+occasion: wedding
 metal: gold
 purity: 22K
 photos:
