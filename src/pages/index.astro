@@ -24,7 +24,7 @@ const byIds = (hp.featuredProductIds || [])
   .filter((p): p is NonNullable<typeof p> => Boolean(p));
 const featured = byIds.length > 0 ? byIds : products.filter((p) => p.data.featured);
 
-const weddingFeatured = products.filter((p) => p.data.occasion === 'wedding' && p.data.availability !== 'sold').slice(0, 4);
+const weddingFeatured = products.filter((p) => p.data.occasion === 'wedding' && p.data.availability !== 'sold');
 const everyday = products.filter((p) => p.data.occasion === 'everyday').slice(0, 4);
 const traditional = products.filter((p) => p.data.occasion === 'traditional').slice(0, 4);
 const newArrivals = products.filter((p) => p.data.newArrival).slice(0, 4);
