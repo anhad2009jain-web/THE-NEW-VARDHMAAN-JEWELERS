@@ -33,7 +33,7 @@ for (const p of allProducts) {
     products.push(p);
   }
 }
-const featured = products.filter((p) => p.data.featured).slice(0, 8);
+
 ---
 
 <Base title={label} description={intro}>
@@ -52,17 +52,17 @@ const featured = products.filter((p) => p.data.featured).slice(0, 8);
       </section>
     )}
 
-    {featured.length > 0 && (
-      <section class="section" style="padding-top:20px;">
-        <div class="section-head" style="text-align:left;">
-          <h2>Featured Pieces</h2>
-          <div class="rule" style="margin-left:0;"></div>
-        </div>
-        <div class="grid">
-          {featured.map((p) => <ProductCard product={p} />)}
-        </div>
-      </section>
-    )}
+{products.length > 0 && (
+  <section class="section" style="padding-top:20px;">
+    <div class="section-head" style="text-align:left;">
+      <h2>All Jewellery</h2>
+      <div class="rule" style="margin-left:0;"></div>
+    </div>
+    <div class="grid">
+      {products.map((p) => <ProductCard product={p} />)}
+    </div>
+  </section>
+)}
 
     {categories.length === 0 && products.length === 0 && (
       <p class="empty-note">This collection is being curated. Please check back soon or visit our showroom.</p>
