@@ -28,7 +28,10 @@ const products = defineCollection({
     bestseller: z.boolean().default(false),
     photos: z.array(z.string()).min(1),
     shortDescription: z.string().default(''),
-    updatedAt: z.string().default(''),
+   updatedAt: z.preprocess(
+  (value) => value instanceof Date ? value.toISOString().slice(0, 10) : value,
+  z.string().default('')
+),
     demo: z.boolean().default(false),
   }),
 });
