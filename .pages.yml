@@ -441,7 +441,6 @@ content:
           value: "{path}"
           label: "{fields.name}"
       - name: occasion
-       - name: occasion
         label: Occasion
         type: select
         required: true
