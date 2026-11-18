@@ -430,22 +430,21 @@ content:
         type: string
         required: true
         description: Unique code, e.g. VJ-GR-001. Used in WhatsApp enquiries.
-         -name: category
-        label: Jewellery Category
+      -name: category
+        label: jewellery category
         type: reference
-        required: true
-        description: Select the jewellery category for this product.
+        reuired: true
+        description: select the jewellery category for this product
         options:
-          collection: categories
+          collections: categories
           search: "name"
           value: "{primary}"
           label: "{primary}"
-
-         - name: occasion
-        label: Occasion
+      -name: ocassion
+        label: occasion
         type: select
         options:
-          values: [everyday, wedding, traditional, festive]
+          values: [everyday,wedding,traditional,festive]
       - name: metal
         label: Metal
         type: select
