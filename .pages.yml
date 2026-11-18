@@ -430,17 +430,17 @@ content:
         type: string
         required: true
         description: Unique code, e.g. VJ-GR-001. Used in WhatsApp enquiries.
-      -name: category
+      - name: category
         label: jewellery category
         type: reference
-        reuired: true
+        required: true
         description: select the jewellery category for this product
         options:
-          collections: categories
+          collection: categories
           search: "name"
-          value: "{primary}"
+          value: "{path}"
           label: "{primary}"
-      -name: ocassion
+      - name: ocassion
         label: occasion
         type: select
         options:
