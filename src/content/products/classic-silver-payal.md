@@ -1,5 +1,5 @@
 ---
-name: Exclusive bridal set
+name: Exclusive Bridal Set
 productId: VJ-SA-001
 category: src/content/categories/bridal-sets.md
 occasion: wedding
