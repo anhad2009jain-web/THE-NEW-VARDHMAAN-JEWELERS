@@ -1,17 +1,16 @@
 {
   "rates": {
-    "24K": 7850,
-    "22K": 7196,
-    "18K": 5888,
-    "14K": 4579,
-    "925 Silver": 95
+    "24K": 13199,
+    "22K": 12750,
+    "18K": 10285,
+    "14K": 7773,
+    "925 Silver": 185
   },
-  "currency": "INR",
   "taxPercent": 3,
   "taxLabel": "GST",
   "maxRateAgeHours": 72,
-  "updatedAt": "2026-11-17T09:30:00+05:30",
+  "updatedAt": "2026-11-17T22:15+00:00",
   "priceDisclaimer": "All prices shown are indicative estimates based on the gold rates above. Final price is confirmed at the store on the day of purchase.",
-  "demoMode": true,
-  "demoNotice": "DEMONSTRATION RATES ONLY — update with today's actual Jammu gold rates in Pages CMS before going live."
+  "demoMode": false,
+  "demoNotice": "."
 }
