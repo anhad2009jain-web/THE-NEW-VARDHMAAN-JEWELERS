@@ -28,8 +28,10 @@ const catNames = new Set(categories.map((c) => c.data.name.trim().toLowerCase())
 const allProducts = await getProducts();
 const products = [];
 for (const p of allProducts) {
-  const ref = p.data.category;
-  if (catRefs.has(ref) || catNames.has(ref.trim().toLowerCase())) products.push(p);
+  const resolvedCategory = await resolveCategory(p.data.category);
+  if (resolvedCategory && catRefs.has(resolvedCategory.slug)) {
+    products.push(p);
+  }
 }
 const featured = products.filter((p) => p.data.featured).slice(0, 8);
 ---
