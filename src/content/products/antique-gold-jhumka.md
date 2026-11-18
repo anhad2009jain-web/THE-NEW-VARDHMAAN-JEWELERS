@@ -2,7 +2,7 @@
 name: Wedding set
 productId: VJ-GE-001
 category: src/content/categories/bridal-sets.md
-occassion: wedding
+occasion: wedding
 metal: gold
 purity: 22K
 photos:
