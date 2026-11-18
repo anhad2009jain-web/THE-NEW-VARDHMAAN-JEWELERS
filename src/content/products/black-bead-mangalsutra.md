@@ -1,7 +1,7 @@
 ---
 name: "22K diamond ring "
 productId: VJ-GM-001
-category: diamond-rings.md
+category: bridal-chokers.md
 occasion: wedding
 metal: diamond
 purity: 22K
