@@ -440,11 +440,17 @@ content:
           search: "name"
           value: "{path}"
           label: "{fields.name}"
-      - name: occassion
-        label: occasion
+      - name: occasion
+       - name: occasion
+        label: Occasion
         type: select
+        required: true
         options:
-          values: [everyday,wedding,traditional,festive]
+          values:
+            - { name: everyday, label: Everyday }
+            - { name: wedding, label: Wedding }
+            - { name: traditional, label: Traditional }
+            - { name: festive, label: Festive }
       - name: metal
         label: Metal
         type: select
