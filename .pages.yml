@@ -441,7 +441,7 @@ content:
           value: "{primary}"
           label: "{primary}"
 
-      - name: occasion
+       - name: occasion
         label: Occasion
         type: select
         options:
