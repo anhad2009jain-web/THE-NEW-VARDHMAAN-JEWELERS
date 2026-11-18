@@ -89,7 +89,12 @@ const reviews = defineCollection({
     title: z.string().default(''),
     review: z.string(),
     productName: z.string().default(''),
-    date: z.string().default(''),
+    date: z.preprocess(
+  (value) => value instanceof Date
+    ? value.toISOString().slice(0, 10)
+    : value,
+  z.string().default('')
+),
     order: z.number().int().default(99),
     published: z.boolean().default(true),
   }),
