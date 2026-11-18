@@ -439,7 +439,7 @@ content:
           collection: categories
           search: "name"
           value: "{path}"
-          label: "{primary}"
+          label: "{name}"
       - name: occassion
         label: occasion
         type: select
