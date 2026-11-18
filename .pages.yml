@@ -440,7 +440,7 @@ content:
           search: "name"
           value: "{path}"
           label: "{primary}"
-      - name: ocassion
+      - name: occassion
         label: occasion
         type: select
         options:
