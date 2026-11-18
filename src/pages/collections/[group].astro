@@ -28,12 +28,18 @@ const catNames = new Set(categories.map((c) => c.data.name.trim().toLowerCase())
 const allProducts = await getProducts();
 const products = [];
 for (const p of allProducts) {
+  if (group === 'wedding') {
+    if (p.data.occasion === 'wedding' && p.data.availability !== 'sold') {
+      products.push(p);
+    }
+    continue;
+  }
+
   const resolvedCategory = await resolveCategory(p.data.category);
   if (resolvedCategory && catRefs.has(resolvedCategory.slug)) {
     products.push(p);
   }
 }
-
 ---
 
 <Base title={label} description={intro}>
