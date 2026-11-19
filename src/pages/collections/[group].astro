@@ -29,14 +29,9 @@ const allProducts = await getProducts();
 const products = [];
 
 for (const p of allProducts) {
-  const resolvedCategory = await resolveCategory(p.data.category);
-
   if (group === 'wedding') {
-    const isWeddingByOccasion = p.data.occasion === 'wedding';
-    const isWeddingByCategory = resolvedCategory?.data.group === 'wedding';
-
     if (
-      (isWeddingByOccasion || isWeddingByCategory) &&
+      p.data.occasion === 'wedding' &&
       p.data.availability !== 'sold'
     ) {
       products.push(p);
@@ -44,6 +39,8 @@ for (const p of allProducts) {
 
     continue;
   }
+
+  const resolvedCategory = await resolveCategory(p.data.category);
 
   if (resolvedCategory && catRefs.has(resolvedCategory.slug)) {
     products.push(p);
