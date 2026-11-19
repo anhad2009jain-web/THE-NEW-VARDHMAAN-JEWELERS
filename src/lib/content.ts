@@ -18,20 +18,30 @@ export async function getCategories(enabledOnly = true): Promise<Category[]> {
 }
 
 /**
- * Resolve a product's category reference. Pages CMS may store either the
- * file slug ("gold-rings") or the display name ("Gold Rings") — accept both.
+ * Resolve a product category reference.
+ * Supports category slugs, names, filenames and full Pages CMS paths.
  */
 export async function resolveCategory(ref: string): Promise<Category | undefined> {
   const cats = await getCategories(false);
+
   const norm = (s: string) => s.trim().toLowerCase();
-  const asSlug = (s: string) => norm(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const asSlug = (s: string) =>
+    norm(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+  // Convert Windows paths to normal paths, then extract the filename.
+  const cleanRef = norm(ref)
+    .replace(/\\/g, '/')
+    .split('/')
+    .pop()!
+    .replace(/\.mdx?$/i, '');
+
   return (
-    cats.find((c) => c.slug === ref) ||
+    cats.find((c) => norm(c.slug) === cleanRef) ||
     cats.find((c) => norm(c.data.name) === norm(ref)) ||
+    cats.find((c) => asSlug(c.data.name) === asSlug(cleanRef)) ||
     cats.find((c) => asSlug(c.data.name) === asSlug(ref))
   );
 }
-
 export async function getProducts(): Promise<Product[]> {
   return await getCollection('products');
 }
