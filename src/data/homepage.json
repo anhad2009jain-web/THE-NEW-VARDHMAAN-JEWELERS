@@ -12,8 +12,7 @@
   },
   "promoText": "BIS hallmarked gold jewellery • Transparent per-gram pricing • Wedding and everyday collections",
   "video": {
-    "enabled": false,
-    "file": ""
+    "file": "https://res.cloudinary.com/of56h5di/video/upload/v1795177530/advertisement_tnvj.mp4"
   },
   "sections": {
     "showFeaturedWedding": true,
@@ -69,9 +68,9 @@
     "heading": "Visit Our Store",
     "text": "Experience our collections in person. Walk in for a cup of tea and an unhurried look at our jewellery."
   },
- "seo": {
-  "title": "Gold & Bridal Jewellery in Jammu",
-  "description": "Discover BIS hallmarked gold jewellery, diamond designs and bridal collections at THE NEW Vardhman Jewellers, Talab Tillo, Jammu. Visit our showroom.",
-  "ogImage": "/uploads/TNVJ-4.jpeg"
-}
+  "seo": {
+    "title": "Gold & Bridal Jewellery in Jammu",
+    "description": "Discover BIS hallmarked gold jewellery, diamond designs and bridal collections at THE NEW Vardhman Jewellers, Talab Tillo, Jammu. Visit our showroom.",
+    "ogImage": "/uploads/TNVJ-4.jpeg"
+  }
 }
