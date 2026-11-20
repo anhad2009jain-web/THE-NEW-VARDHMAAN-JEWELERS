@@ -58,7 +58,21 @@ const addressLine = [addr.line1, addr.line2, `${addr.city}, ${addr.state} ${addr
   </section>
 
   {hp.promoText && <div class="promo-strip">{hp.promoText}</div>}
-
+{hp.video?.enabled && hp.video?.file && (
+    <section class="homepage-video-section">
+      <div class="homepage-video-wrapper">
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        >
+          <source src={asset(hp.video.file)} type="video/mp4" />
+        </video>
+      </div>
+    </section>
+  )}
   <!-- 1. Featured Wedding Collection -->
   {sec.showFeaturedWedding && weddingFeatured.length > 0 && (
     <section class="section">
@@ -310,4 +324,22 @@ const addressLine = [addr.line1, addr.line2, `${addr.city}, ${addr.state} ${addr
       </div>
     </section>
   )}
+<style>
+    .homepage-video-section {
+      width: 100%;
+      padding: 20px 0;
+    }
+
+    .homepage-video-wrapper {
+      width: 100%;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .homepage-video-wrapper video {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  </style>
 </Base>
