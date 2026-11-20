@@ -276,10 +276,10 @@ content:
         label: Homepage Video Advertisement
         type: object
         fields:
-       - name: file
-         label: Advertisement Video URL
-         type: string
-         description: Paste the Cloudinary Secure URL of your MP4 video.
+          - name: file
+            label: Advertisement Video URL
+            type: string
+            description: Paste the Cloudinary Secure URL of your MP4 video.
       - name: sections
         label: Homepage Section Visibility
         type: object
