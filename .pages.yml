@@ -272,7 +272,20 @@ content:
         label: Homepage Promotional Text
         type: string
         description: Slim highlight strip shown below the banner.
-
+      - name: video
+        label: Homepage Video Advertisement
+        type: object
+        fields:
+          - name: enabled
+            label: Show Video Advertisement
+            type: boolean
+          - name: file
+            label: Advertisement Video
+            type: file
+            options:
+              path: videos
+              categories: [video]
+              extensions: [mp4]
       - name: sections
         label: Homepage Section Visibility
         type: object
