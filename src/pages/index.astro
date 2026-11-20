@@ -342,10 +342,33 @@ const addressLine = [addr.line1, addr.line2, `${addr.city}, ${addr.state} ${addr
       padding: 20px 0;
     }
 
-    .homepage-video-wrapper {
-      width: 100%;
-      overflow: hidden;
-      background: #111;
+   .homepage-video-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #111;
+}
+
+.video-sound-button {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 30px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.video-sound-button:hover {
+  background: rgba(0,0,0,0.9);
+}
     }
 
     .homepage-video-wrapper video {
@@ -354,4 +377,35 @@ const addressLine = [addr.line1, addr.line2, `${addr.city}, ${addr.state} ${addr
       height: auto;
     }
   </style>
+<script>
+  const video = document.querySelector<HTMLVideoElement>(
+    '#homepage-ad-video'
+  );
+
+  const soundButton = document.querySelector<HTMLButtonElement>(
+    '#video-sound-toggle'
+  );
+
+  const soundIcon = document.querySelector('#video-sound-icon');
+  const soundLabel = document.querySelector('#video-sound-label');
+
+  if (video && soundButton && soundIcon && soundLabel) {
+    soundButton.addEventListener('click', () => {
+      video.muted = !video.muted;
+
+      soundIcon.textContent = video.muted ? '🔇' : '🔊';
+      soundLabel.textContent = video.muted ? 'Sound Off' : 'Sound On';
+
+      soundButton.setAttribute(
+        'aria-label',
+        video.muted ? 'Turn video sound on' : 'Turn video sound off'
+      );
+
+      soundButton.setAttribute(
+        'aria-pressed',
+        String(!video.muted)
+      );
+    });
+  }
+</script>
 </Base>
