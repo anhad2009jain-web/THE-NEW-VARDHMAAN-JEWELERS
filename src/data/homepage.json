@@ -11,9 +11,10 @@
     "secondaryButtonLink": "/collections/wedding"
   },
   "promoText": "BIS hallmarked gold jewellery • Transparent per-gram pricing • Wedding and everyday collections",
-  "video": {
-    "file": "https://res.cloudinary.com/of56h5di/video/upload/v1795177530/advertisement_tnvj.mp4"
-  },
+ "video": {
+  "enabled": true,
+  "file": "https://res.cloudinary.com/of56h5di/video/upload/v1795177530/advertisement_tnvj.mp4"
+},
   "sections": {
     "showFeaturedWedding": true,
     "showEveryday": true,
