@@ -276,16 +276,10 @@ content:
         label: Homepage Video Advertisement
         type: object
         fields:
-          - name: enabled
-            label: Show Video Advertisement
-            type: boolean
-          - name: file
-            label: Advertisement Video
-            type: file
-            options:
-              path: videos
-              categories: [video]
-              extensions: [mp4]
+       - name: file
+         label: Advertisement Video URL
+         type: string
+         description: Paste the Cloudinary Secure URL of your MP4 video.
       - name: sections
         label: Homepage Section Visibility
         type: object
