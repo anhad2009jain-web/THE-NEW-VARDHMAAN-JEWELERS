@@ -1,6 +1,9 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 
-export type Product = CollectionEntry<'products'>;
+export type Product =
+  | CollectionEntry<'products'>
+  | CollectionEntry<'goldProducts'>
+  | CollectionEntry<'diamondProducts'>;
 export type Category = CollectionEntry<'categories'>;
 export type Testimonial = CollectionEntry<'testimonials'>;
 export type Album = CollectionEntry<'albums'>;
@@ -43,9 +46,14 @@ export async function resolveCategory(ref: string): Promise<Category | undefined
   );
 }
 export async function getProducts(): Promise<Product[]> {
-  return await getCollection('products');
-}
+  const [products, goldProducts, diamondProducts] = await Promise.all([
+    getCollection('products'),
+    getCollection('goldProducts'),
+    getCollection('diamondProducts'),
+  ]);
 
+  return [...products, ...goldProducts, ...diamondProducts];
+}
 export async function getTestimonials(): Promise<Testimonial[]> {
   const all = await getCollection('testimonials');
   return all.filter((t) => t.data.published).sort((a, b) => a.data.order - b.data.order);
