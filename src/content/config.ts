@@ -57,7 +57,7 @@ const diamondProducts = defineCollection({
   type: 'content',
   schema: z.object({
     ...productFields,
-,
+
   }),
 });
 // Jewellery categories / albums — editable under "Jewellery Categories".
