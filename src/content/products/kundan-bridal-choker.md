@@ -1,31 +1,26 @@
 ---
-name: gold wedding set
+name: GOLD PENDANT SET 1
 productId: VJ-BC-001
-category: src/content/categories/bridal-chokers.md
+category: src/content/categories/gold pendant set.md
 occasion: wedding
 metal: gold
 purity: 22K
 photos:
-  - /uploads/wedding set.jpg
-grossWeight: 68.4
-netGoldWeight: 66.2
-stoneWeight: 2.2
-stonePrice: 18500
+  - /uploads/pendant set 1-1.jpeg
+grossWeight: 129.7
+netGoldWeight: 25.85
+stoneWeight: 3.77
+stonePrice: 9500
 makingChargeType: percent
-makingChargeValue: 15
+makingChargeValue: 10
 wastagePercent: 0
 otherCharges: 0
 bisHallmark: true
-huid: HUID789012
 availability: available
 featured: true
 newArrival: false
 bestseller: false
-shortDescription: Demonstration product — kundan bridal choker shown to
-  demonstrate catalogue features. Replace with real inventory in Pages CMS.
-updatedAt: 2026-11-17
+updatedAt: 2026-11-23
 demo: true
 ---
-Demonstration description for **Kundan Bridal Choker**.
-
-This sample entry demonstrates how product specifications, photographs, hallmark details and automatic price calculation appear on the website. Replace it with a real article through Pages CMS.
+ENTIQUE PENDANT SET
