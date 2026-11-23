@@ -498,6 +498,9 @@ content:
       - name: stonePrice
         label: Stone Price (₹)
         type: number
+      - name: diamondPrice
+        label: Diamond Price (₹)
+        type: number
       - name: makingChargeType
         label: Making Charge Type
         type: select
