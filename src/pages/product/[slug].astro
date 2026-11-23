@@ -116,7 +116,12 @@ const availLabel =
                   <div class="price-lines">
                     <div><span>Gold value ({formatWeight(d.netGoldWeight)} × {formatINR(price.ratePerGram!)}/g {d.purity})</span><span>{formatINR(price.goldValue)}</span></div>
                     <div><span>Making charges ({describeMakingCharges(d)})</span><span>{formatINR(price.makingCharges)}</span></div>
-                    {price.stoneCharges > 0 && <div><span>Stone charges</span><span>{formatINR(price.stoneCharges)}</span></div>}
+                    {price.stoneCharges > 0 && (
+  <div>
+    <span>{d.metal === 'diamond' ? 'Diamond charges' : 'Stone charges'}</span>
+    <span>{formatINR(price.stoneCharges)}</span>
+  </div>
+)}
                     {price.wastage > 0 && <div><span>Wastage</span><span>{formatINR(price.wastage)}</span></div>}
                     {price.otherCharges > 0 && <div><span>Other charges</span><span>{formatINR(price.otherCharges)}</span></div>}
                     <div><span>{price.taxLabel} ({price.taxPercent}%)</span><span>{formatINR(price.taxAmount)}</span></div>
