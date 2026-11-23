@@ -697,7 +697,136 @@ content:
         label: Demo Product
         type: boolean
 
+  # ------# --------------------------------------------------------------------------
+  # DIAMOND JEWELLERY PRODUCTS
   # --------------------------------------------------------------------------
+  - name: diamondProducts
+    label: Diamond Jewellery
+    type: collection
+    path: src/content/diamondProducts
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      primary: name
+      sort: updatedAt
+      order: desc
+    fields:
+      - name: name
+        label: Product Name
+        type: string
+        required: true
+      - name: productId
+        label: Product ID
+        type: string
+        required: true
+      - name: category
+        label: Jewellery Category
+        type: reference
+        required: true
+        options:
+          collection: categories
+          search: "name"
+          value: "{path}"
+          label: "{fields.name}"
+      - name: occasion
+        label: Occasion
+        type: select
+        required: true
+        options:
+          values: [everyday, wedding, traditional, festive]
+      - name: metal
+        label: Metal
+        type: select
+        required: true
+        options:
+          values: [diamond]
+      - name: purity
+        label: Purity
+        type: select
+        required: true
+        options:
+          values: [24K, 22K, 18K, 14K, 925 Silver, N/A]
+      - name: photos
+        label: Product Photographs
+        type: image
+        required: true
+        options:
+          multiple:
+            max: 8
+          unique: true
+          path: products
+      - name: grossWeight
+        label: Gross Weight (grams)
+        type: number
+        required: true
+      - name: netGoldWeight
+        label: Net Gold Weight (grams)
+        type: number
+        required: true
+      - name: stoneWeight
+        label: Stone Weight (grams)
+        type: number
+      - name: diamondPrice
+        label: Diamond Price (₹)
+        type: number
+      - name: makingChargeType
+        label: Making Charge Type
+        type: select
+        required: true
+        options:
+          values: [fixed, per-gram, percent]
+      - name: makingChargeValue
+        label: Making Charge Value
+        type: number
+        required: true
+      - name: wastagePercent
+        label: Wastage (%)
+        type: number
+      - name: otherCharges
+        label: Other Charges (₹)
+        type: number
+      - name: priceOverride
+        label: Manual Price Override (₹)
+        type: number
+      - name: bisHallmark
+        label: BIS Hallmarked
+        type: boolean
+      - name: huid
+        label: HUID Number
+        type: string
+      - name: hallmarkNote
+        label: Hallmark Note
+        type: string
+      - name: availability
+        label: Availability
+        type: select
+        required: true
+        options:
+          values: [available, sold, made-to-order]
+      - name: featured
+        label: Featured Product
+        type: boolean
+      - name: newArrival
+        label: New Arrival
+        type: boolean
+      - name: bestseller
+        label: Bestseller
+        type: boolean
+      - name: shortDescription
+        label: Short Description
+        type: text
+      - name: body
+        label: Full Description
+        type: rich-text
+      - name: updatedAt
+        label: Last Updated
+        type: date
+        options:
+          format: yyyy-MM-dd
+      - name: demo
+        label: Demo Product
+        type: boolean--------------------------------------------------------------------
   # 5. JEWELLERY CATEGORIES (albums / collections)
   # --------------------------------------------------------------------------
   - name: categories
