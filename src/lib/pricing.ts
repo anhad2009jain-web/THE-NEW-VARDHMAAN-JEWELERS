@@ -78,6 +78,7 @@ export interface ProductPricingInput {
   grossWeight: number;
   netGoldWeight: number;
   stonePrice: number;
+  diamondPrice: number;
   makingChargeType: 'fixed' | 'per-gram' | 'percent';
   makingChargeValue: number;
   wastagePercent: number;
@@ -154,7 +155,12 @@ export function computePrice(input: ProductPricingInput, now: Date = new Date())
   base.makingCharges = toRupees(toPaise(making));
 
   // 5. Stones, wastage, other charges.
-  base.stoneCharges = toRupees(toPaise(input.stonePrice || 0));
+  const materialPrice =
+  input.metal === 'diamond'
+    ? input.diamondPrice
+    : input.stonePrice;
+
+base.stoneCharges = toRupees(toPaise(materialPrice || 0));
   base.wastage = toRupees(toPaise(((input.wastagePercent || 0) / 100) * goldValue));
   base.otherCharges = toRupees(toPaise(input.otherCharges || 0));
 
