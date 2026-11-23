@@ -6,7 +6,7 @@ occasion: wedding
 metal: gold
 purity: 22K
 photos:
-  - /uploads/pendant set 2-2.jpeg
+  - /uploads/PENDANT NEW.jpeg
 grossWeight: 129.7
 netGoldWeight: 25.85
 stoneWeight: 3.77
