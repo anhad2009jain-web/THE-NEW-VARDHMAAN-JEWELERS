@@ -14,7 +14,7 @@ const products = defineCollection({
     netGoldWeight: z.number().nonnegative().default(0),
     stoneWeight: z.number().nonnegative().default(0),
     stonePrice: z.number().nonnegative().default(0),
-    diamondPrice: z.number().nonnegative().default(0)
+    diamondPrice: z.number().nonnegative().default(0),
     makingChargeType: z.enum(['fixed', 'per-gram', 'percent']).default('per-gram'),
     makingChargeValue: z.number().nonnegative().default(0),
     wastagePercent: z.number().nonnegative().default(0),
