@@ -9,6 +9,8 @@ const productFields = {
   metal: z.enum(['gold', 'diamond', 'silver', 'platinum', 'other']).default('gold'),
   purity: z.enum(['24K', '22K', '18K', '14K', '925 Silver', 'N/A']).default('22K'),
   grossWeight: z.number().nonnegative().default(0),
+  stonePrice: z.number().nonnegative().default(0),
+  diamondPrice: z.number().nonnegative().default(0),
   netGoldWeight: z.number().nonnegative().default(0),
   stoneWeight: z.number().nonnegative().default(0),
   makingChargeType: z.enum(['fixed', 'per-gram', 'percent']).default('per-gram'),
@@ -37,8 +39,7 @@ const products = defineCollection({
   type: 'content',
   schema: z.object({
     ...productFields,
-    stonePrice: z.number().nonnegative().default(0),
-    diamondPrice: z.number().nonnegative().default(0),
+  
   }),
 });
 
@@ -47,7 +48,7 @@ const goldProducts = defineCollection({
   type: 'content',
   schema: z.object({
     ...productFields,
-    stonePrice: z.number().nonnegative().default(0),
+   
   }),
 });
 
@@ -56,7 +57,7 @@ const diamondProducts = defineCollection({
   type: 'content',
   schema: z.object({
     ...productFields,
-    diamondPrice: z.number().nonnegative().default(0),
+,
   }),
 });
 // Jewellery categories / albums — editable under "Jewellery Categories".
