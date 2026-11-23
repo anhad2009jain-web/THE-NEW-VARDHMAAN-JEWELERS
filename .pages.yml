@@ -639,6 +639,9 @@ content:
       - name: stoneWeight
         label: Stone Weight (grams)
         type: number
+      - name: diamondPrice
+        label: Diamond Price (₹)
+        type: number
       - name: stonePrice
         label: Stone Price (₹)
         type: number
@@ -772,6 +775,9 @@ content:
         type: number
       - name: diamondPrice
         label: Diamond Price (₹)
+        type: number
+      - name: stonePrice
+        label: Stone Price (₹)
         type: number
       - name: makingChargeType
         label: Making Charge Type
