@@ -57,9 +57,9 @@ need to — just wait a few minutes and refresh the website.
 3. Drag the photographs to reorder them — the first one is the main photo.
 4. Save.
 
-## 6. How to edit making charges
 
-1. Open **Jewellery Products** → open the product.
+
+## 7. How to change homepage banners and promotional text
 
 1. Open **Homepage Content**.
 2. Under **Homepage Banner (Hero)**, replace the banner image(s), headline,
