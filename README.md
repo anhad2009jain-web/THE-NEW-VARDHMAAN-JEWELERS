@@ -4,7 +4,7 @@ Luxury jewellery website for **Vardhman Jewellers, Talab Tillo, Jammu**, built w
 [Astro](https://astro.build) (static site), managed entirely through
 [Pages CMS](https://pagescms.org) and deployed automatically to **GitHub Pages**.
 
-> The sample products, photographs, rates and business details currently in the
+> The sample products, photographs,  business details currently in the
 > repository are **demonstration content**. Replace them with real content through
 > Pages CMS before going live (see `OWNER_GUIDE.md`).
 
@@ -34,8 +34,8 @@ inside this repository and is editable through Pages CMS.
 |---|---|---|
 | Business name, address, phones, WhatsApp, social, hours, About Us, logo, favicon, footer, jewellery section names | `src/data/site.json` | **Business Information** |
 | Homepage banner, promo text, section visibility, featured products, SEO | `src/data/homepage.json` | **Homepage Content** |
-| Products (name, photos, weights, purity, making charges, HUID, price, availability) | `src/content/products/*.md` | **Jewellery Products** |
-| Products (name, photos, weights, purity, making charges, HUID, price, availability) | `src/content/products/*.md` | **Jewellery Products** |
+| Products (name, photos, weights, purity, HUID, price, availability) | `src/content/products/*.md` | **Jewellery Products** |
+| Products (name, photos, weights, purity, HUID, price, availability) | `src/content/products/*.md` | **Jewellery Products** |
 | Jewellery categories / albums (name, cover, order, enable/disable) | `src/content/categories/*.md` | **Jewellery Categories** |
 | Photo gallery albums (create, upload, reorder, publish/hide, feature) | `src/content/albums/*.md` | **Gallery Management** |
 | Customer testimonials | `src/content/testimonials/*.md` | **Customer Testimonials** |
@@ -80,12 +80,12 @@ public/uploads/             CMS-uploaded media
 src/
   data/site.json            Business Information
   data/homepage.json        Homepage content
-  data/gold-rates.json      Daily gold rates + tax
+ 
   content/products/         Jewellery products (Markdown + frontmatter)
   content/categories/       Jewellery categories
   content/albums/           Gallery albums
   content/testimonials/     Testimonials
-  lib/pricing.ts            Gold price calculator
+
   lib/urls.ts               Base-path-safe URL helpers
   pages/                    Home, collections, category, product, gallery, about, contact, search
 ```
