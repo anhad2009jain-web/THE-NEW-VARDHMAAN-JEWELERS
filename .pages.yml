@@ -446,7 +446,7 @@ content:
         label: jewellery category
         type: reference
         required: true
-        description: select the jewellery category for this product
+         description: select the jewellery category for this product
         options:
           collection: categories
           search: "name"
