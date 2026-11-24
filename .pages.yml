@@ -722,10 +722,7 @@ content:
       - name: stoneWeight
         label: Stone Weight (grams)
         type: number
-      - name: diamondPrice
-        label: Diamond Price (₹)
-        type: number
-      - name: stonePrice
+     
         
       - name: bisHallmark
         label: BIS Hallmarked
