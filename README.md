@@ -34,7 +34,7 @@ inside this repository and is editable through Pages CMS.
 |---|---|---|
 | Business name, address, phones, WhatsApp, social, hours, About Us, logo, favicon, footer, jewellery section names | `src/data/site.json` | **Business Information** |
 | Homepage banner, promo text, section visibility, featured products, SEO | `src/data/homepage.json` | **Homepage Content** |
-| Daily gold rates (24K/22K/18K/14K/silver), tax, disclaimer | `src/data/gold-rates.json` | **Daily Gold Rates** |
+| Products (name, photos, weights, purity, making charges, HUID, price, availability) | `src/content/products/*.md` | **Jewellery Products** |
 | Products (name, photos, weights, purity, making charges, HUID, price, availability) | `src/content/products/*.md` | **Jewellery Products** |
 | Jewellery categories / albums (name, cover, order, enable/disable) | `src/content/categories/*.md` | **Jewellery Categories** |
 | Photo gallery albums (create, upload, reorder, publish/hide, feature) | `src/content/albums/*.md` | **Gallery Management** |
@@ -44,22 +44,7 @@ inside this repository and is editable through Pages CMS.
 
 The CMS dashboard layout is defined by **`.pages.yml`** in the repository root.
 
-## Gold price calculator
 
-`src/lib/pricing.ts` computes every product's estimated price at build time:
-
-```
-Gold value   = net gold weight × applicable CMS gold rate (₹/g of its purity)
-Making       = fixed ₹ | ₹/g (on gross weight) | % of gold value
-Subtotal     = gold value + making + stone + wastage + other charges
-Total        = subtotal + configurable tax %
-```
-
-- Rates come only from `gold-rates.json` — **never hardcoded, never invented**.
-- If a rate is missing, zero, or older than `maxRateAgeHours`, products show
-  **"Price on Request"**.
-- `priceOverride` on a product always wins.
-- Calculations use integer-paise arithmetic to avoid floating-point errors.
 
 ## Local development
 
