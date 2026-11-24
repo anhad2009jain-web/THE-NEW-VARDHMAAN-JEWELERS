@@ -369,55 +369,7 @@ content:
             options:
               path: banners
 
-  # --------------------------------------------------------------------------
-  # 3. DAILY GOLD RATES
-  # --------------------------------------------------------------------------
-  - name: gold-rates
-    label: Daily Gold Rates
-    type: file
-    path: src/data/gold-rates.json
-    description: Today's gold rates. Every product price recalculates automatically when these change.
-    fields:
-      - name: rates
-        label: Gold Rates (₹ per gram)
-        type: object
-        required: true
-        fields:
-          - { name: 24K, label: 24K Gold (₹/g), type: number, required: true }
-          - { name: 22K, label: 22K Gold (₹/g), type: number, required: true }
-          - { name: 18K, label: 18K Gold (₹/g), type: number, required: true }
-          - { name: 14K, label: 14K Gold (₹/g), type: number }
-          - { name: 925 Silver, label: 925 Silver (₹/g), type: number }
-      - name: taxPercent
-        label: Tax Percentage
-        type: number
-        description: Applied on top of the subtotal (e.g. 3 for 3% GST). Confirm with your accountant.
-      - name: taxLabel
-        label: Tax Label
-        type: string
-        description: Shown next to the tax line, e.g. GST.
-      - name: maxRateAgeHours
-        label: Rates Expire After (hours)
-        type: number
-        description: If rates are older than this, products show "Price on Request" until rates are updated.
-      - name: updatedAt
-        label: Rates Last Updated
-        type: date
-        required: true
-        options:
-          time: true
-          format: yyyy-MM-dd'T'HH:mmxxx
-      - name: priceDisclaimer
-        label: Price Disclaimer Text
-        type: text
-      - name: demoMode
-        label: Demo Rates Notice
-        type: boolean
-        description: While ON, a notice reminds visitors these are demonstration rates.
-      - name: demoNotice
-        label: Demo Notice Text
-        type: string
-
+  
   # --------------------------------------------------------------------------
   # 4. JEWELLERY PRODUCTS
   # --------------------------------------------------------------------------
@@ -472,7 +424,7 @@ content:
         label: Purity
         type: select
         required: true
-        description: Determines which gold rate is used for price calculation.
+       description: Specifies the purity of the jewellery for product information.
         options:
           values: [24K, 22K, 18K, 14K, 925 Silver, N/A]
       - name: photos
