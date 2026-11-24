@@ -5,7 +5,7 @@
 # Docs: https://pagescms.org/docs/configuration/
 #
 # Everything the website displays is edited here. Nothing is hardcoded in the
-# frontend: business details, gold rates, products, gallery, testimonials,
+# frontend: business details, products, gallery, testimonials,
 # homepage banners and About Us content all live in these files.
 # After saving in Pages CMS, GitHub Actions rebuilds and deploys the site.
 # ============================================================================
