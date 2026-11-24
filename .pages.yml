@@ -445,7 +445,7 @@ content:
         label: Net Gold Weight (grams)
         type: number
         required: true
-       description: Technical weight of the gold used in this jewellery item.
+        description: Technical weight of the gold used in this jewellery item.
       - name: stoneWeight
         label: Stone Weight (grams)
         type: number
