@@ -15,8 +15,8 @@ on the live website automatically within a few minutes.
 3. The first time, GitHub will ask you to install the **Pages CMS** app on the
    website repository — click **Install / Authorize**.
 4. Select the website repository. You will now see the editing dashboard with
-   sections like *Business Information*, *Daily Gold Rates*, *Jewellery Products*
-   and *Gallery Management*.
+   sections like *Business Information*,*Jewellery Products*
+   and *Gallery Management* and *customer reviews*
 
 > There is also a discreet **Owner Login** link at the very bottom of your website
 > that takes you to the same page.
@@ -32,17 +32,7 @@ Every time you press **Save / Commit** in Pages CMS:
 You can watch progress in the repository under the **Actions** tab, but you do not
 need to — just wait a few minutes and refresh the website.
 
-## 3. How to change today's gold rates
 
-1. Open **Daily Gold Rates** in the dashboard.
-2. Enter today's rates (₹ per gram) for 24K, 22K, 18K (and 14K / silver if needed).
-3. Set **Rates Last Updated** to the current date and time.
-4. Save.
-
-**Every product price on the website recalculates automatically.** If you ever
-forget to update rates, the website protects you: after the configured number of
-hours, prices automatically switch to **"Price on Request"** so customers never
-see an outdated price.
 
 ## 4. How to add a new jewellery product
 
