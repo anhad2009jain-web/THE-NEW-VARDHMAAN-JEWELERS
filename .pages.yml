@@ -726,27 +726,7 @@ content:
         label: Diamond Price (₹)
         type: number
       - name: stonePrice
-        label: Stone Price (₹)
-        type: number
-      - name: makingChargeType
-        label: Making Charge Type
-        type: select
-        required: true
-        options:
-          values: [fixed, per-gram, percent]
-      - name: makingChargeValue
-        label: Making Charge Value
-        type: number
-        required: true
-      - name: wastagePercent
-        label: Wastage (%)
-        type: number
-      - name: otherCharges
-        label: Other Charges (₹)
-        type: number
-      - name: priceOverride
-        label: Manual Price Override (₹)
-        type: number
+        
       - name: bisHallmark
         label: BIS Hallmarked
         type: boolean
