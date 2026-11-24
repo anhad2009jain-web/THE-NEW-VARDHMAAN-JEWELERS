@@ -493,40 +493,11 @@ content:
         label: Net Gold Weight (grams)
         type: number
         required: true
-        description: Used with the gold rate to calculate gold value.
+       description: Technical weight of the gold used in this jewellery item.
       - name: stoneWeight
         label: Stone Weight (grams)
         type: number
-      - name: stonePrice
-        label: Stone Price (₹)
-        type: number
-      - name: diamondPrice
-        label: Diamond Price (₹)
-        type: number
-      - name: makingChargeType
-        label: Making Charge Type
-        type: select
-        required: true
-        options:
-          values:
-            - { name: fixed, label: Fixed amount (₹) }
-            - { name: per-gram, label: Per gram (₹/g) }
-            - { name: percent, label: Percentage of gold value (%) }
-      - name: makingChargeValue
-        label: Making Charge Value
-        type: number
-        required: true
-        description: ₹ amount, ₹ per gram, or percentage — depending on the type above.
-      - name: wastagePercent
-        label: Wastage (%)
-        type: number
-      - name: otherCharges
-        label: Other Charges (₹)
-        type: number
-      - name: priceOverride
-        label: Manual Price Override (₹)
-        type: number
-        description: Optional. If set, this exact price is shown instead of the calculated price.
+     
       - name: bisHallmark
         label: BIS Hallmarked
         type: boolean
