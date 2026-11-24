@@ -42,16 +42,13 @@ need to — just wait a few minutes and refresh the website.
    - **Jewellery Category** — pick from the dropdown.
    - **Photographs** — upload one or more photos (first photo is the main image).
    - **Purity**, **Gross Weight**, **Net Gold Weight**.
-   - **Making Charge Type** and **Value** (fixed ₹, ₹ per gram, or %).
-   - Stone details, wastage and other charges if applicable.
+   
    - **HUID** — enter the article's real HUID. If you don't have it, leave it
      empty; the website will show *"Hallmark details available at store."*
    - **Availability** — Available / Sold / Made to Order.
 3. Save. The product appears on the website after the rebuild.
 
-> The price is calculated for you from the weight, purity, making charges and
-> today's gold rate. Only use **Manual Price Override** when you want a special
-> fixed price for a piece.
+
 
 ## 5. How to upload a new ring photograph (example)
 
@@ -63,10 +60,6 @@ need to — just wait a few minutes and refresh the website.
 ## 6. How to edit making charges
 
 1. Open **Jewellery Products** → open the product.
-2. Change **Making Charge Type** and/or **Making Charge Value**.
-3. Save — the price recalculates automatically.
-
-## 7. How to change homepage banners and promotional text
 
 1. Open **Homepage Content**.
 2. Under **Homepage Banner (Hero)**, replace the banner image(s), headline,
