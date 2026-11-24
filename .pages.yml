@@ -424,7 +424,7 @@ content:
         label: Purity
         type: select
         required: true
-       description: Specifies the purity of the jewellery for product information.
+        description: Specifies the purity of the jewellery for product information.
         options:
           values: [24K, 22K, 18K, 14K, 925 Silver, N/A]
       - name: photos
