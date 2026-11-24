@@ -34,8 +34,8 @@ inside this repository and is editable through Pages CMS.
 |---|---|---|
 | Business name, address, phones, WhatsApp, social, hours, About Us, logo, favicon, footer, jewellery section names | `src/data/site.json` | **Business Information** |
 | Homepage banner, promo text, section visibility, featured products, SEO | `src/data/homepage.json` | **Homepage Content** |
-| Products (name, photos, weights, purity, HUID, price, availability) | `src/content/products/*.md` | **Jewellery Products** |
-| Products (name, photos, weights, purity, HUID, price, availability) | `src/content/products/*.md` | **Jewellery Products** |
+| Products (name, photos, weights, purity, HUID,  availability) | `src/content/products/*.md` | **Jewellery Products** |
+
 | Jewellery categories / albums (name, cover, order, enable/disable) | `src/content/categories/*.md` | **Jewellery Categories** |
 | Photo gallery albums (create, upload, reorder, publish/hide, feature) | `src/content/albums/*.md` | **Gallery Management** |
 | Customer testimonials | `src/content/testimonials/*.md` | **Customer Testimonials** |
