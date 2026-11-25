@@ -9,8 +9,7 @@ photos:
   - /uploads/new set.jpeg
 grossWeight: 24
 netGoldWeight: 20
-makingChargeType: percent
-makingChargeValue: 5
+
 bisHallmark: false
 availability: available
 featured: false
