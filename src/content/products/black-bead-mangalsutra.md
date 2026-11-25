@@ -10,12 +10,7 @@ photos:
 grossWeight: 9.15
 netGoldWeight: 8.9
 stoneWeight: 0
-stonePrice: 0
-diamonPrice: 0
-makingChargeType: per-gram
-makingChargeValue: 450
-wastagePercent: 0
-otherCharges: 0
+
 bisHallmark: true
 huid: HUID567890
 availability: available
