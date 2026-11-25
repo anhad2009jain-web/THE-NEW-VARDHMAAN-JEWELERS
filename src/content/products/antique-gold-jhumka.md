@@ -9,11 +9,7 @@ photos:
   - /uploads/pendant set 2-1.jpeg
 grossWeight: 76.67
 netGoldWeight: 21.04
-stonePrice: 6019
-makingChargeType: percent
-makingChargeValue: 10
-wastagePercent: 0
-otherCharges: 0
+
 bisHallmark: true
 huid: HUID456789
 availability: available

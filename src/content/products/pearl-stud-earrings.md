@@ -10,11 +10,7 @@ photos:
 grossWeight: 2.4
 netGoldWeight: 2.4
 stoneWeight: 0
-stonePrice: 0
-makingChargeType: fixed
-makingChargeValue: 1100
-wastagePercent: 0
-otherCharges: 0
+
 bisHallmark: true
 huid: HUID901234
 availability: available

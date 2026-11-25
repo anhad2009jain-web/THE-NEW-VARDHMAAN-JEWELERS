@@ -3,31 +3,32 @@ import Base from '../../layouts/Base.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import site from '../../data/site.json';
 import { getProducts, resolveCategory } from '../../lib/content';
-import { computePrice, describeMakingCharges, getRateTable } from '../../lib/pricing';
-import { formatINR, formatINRExact, formatWeight, formatDateTime } from '../../lib/format';
+import { formatWeight } from '../../lib/format';
 import { href, asset } from '../../lib/urls';
 
 export async function getStaticPaths() {
   const products = await getProducts();
-  return products.map((product) => ({ params: { slug: product.slug }, props: { product } }));
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
 }
 
 const { product } = Astro.props;
 const d = product.data;
 const { Content } = await product.render();
 const category = await resolveCategory(d.category);
-const price = computePrice(d);
-const table = getRateTable();
 
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
+
 const waMessage = [
   `Hello ${site.businessName}, I would like to enquire about:`,
-  ``,
+  '',
   `Product: ${d.name}`,
   `Product ID: ${d.productId}`,
   `Link: ${pageUrl}`,
-  price.available ? `Estimated Price: ${formatINRExact(price.total)}` : `Price: On request`,
 ].join('\n');
+
 const waUrl = `https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(waMessage)}`;
 const telUrl = `tel:${site.contact.phonePrimary.replace(/\s/g, '')}`;
 
@@ -43,24 +44,14 @@ const jsonLd = {
   image: d.photos.map((p) => new URL(asset(p), Astro.site).toString()),
   description: d.shortDescription || d.name,
   brand: { '@type': 'Brand', name: site.businessName },
-  ...(price.available && {
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'INR',
-      price: price.total.toFixed(2),
-      availability:
-        d.availability === 'available'
-          ? 'https://schema.org/InStock'
-          : d.availability === 'sold'
-            ? 'https://schema.org/SoldOut'
-            : 'https://schema.org/MadeToOrder',
-      url: pageUrl,
-    },
-  }),
 };
 
 const availLabel =
-  d.availability === 'available' ? 'Available' : d.availability === 'sold' ? 'Sold' : 'Made to Order';
+  d.availability === 'available'
+    ? 'Available'
+    : d.availability === 'sold'
+      ? 'Sold'
+      : 'Made to Order';
 ---
 
 <Base title={d.name} description={d.shortDescription || `${d.name} — ${d.purity}, ${formatWeight(d.netGoldWeight)}`} ogImage={d.photos[0]}>
@@ -74,22 +65,28 @@ const availLabel =
 
     <section class="section" style="padding-top:24px;">
       <div class="product-layout">
-        <!-- Photographs -->
         <div>
           <div class="gallery-main">
             <img id="main-photo" src={asset(d.photos[0])} alt={d.name} width="1000" height="1000" fetchpriority="high" />
           </div>
+
           {d.photos.length > 1 && (
             <div class="gallery-thumbs">
               {d.photos.map((photo, i) => (
-                <img src={asset(photo)} alt={`${d.name} — photo ${i + 1}`} class={i === 0 ? 'active' : ''}
-                  data-full={asset(photo)} loading="lazy" width="82" height="82" />
+                <img
+                  src={asset(photo)}
+                  alt={`${d.name} — photo ${i + 1}`}
+                  class={i === 0 ? 'active' : ''}
+                  data-full={asset(photo)}
+                  loading="lazy"
+                  width="82"
+                  height="82"
+                />
               ))}
             </div>
           )}
         </div>
 
-        <!-- Details -->
         <div>
           <div>
             {d.newArrival && <span class="badge">New Arrival</span>}
@@ -97,54 +94,13 @@ const availLabel =
             <span class={`badge ${d.availability === 'sold' ? 'sold' : d.availability === 'made-to-order' ? 'order' : ''}`}>{availLabel}</span>
             {d.demo && <span class="badge demo">Demo</span>}
           </div>
+
           <h1 style="font-size:clamp(28px,4vw,42px); margin-top:10px;">{d.name}</h1>
+
           <p style="color:var(--taupe); font-size:13px; letter-spacing:.1em; text-transform:uppercase; margin-top:6px;">
             Product ID: {d.productId}
           </p>
 
-          <!-- Key pricing info, always visible near the top -->
-          <div class="price-box">
-            {price.available ? (
-              <>
-                <div class="total">
-                  {formatINR(price.total)}
-                  <small>
-                    Estimated price {price.overridden ? '(fixed by store)' : `incl. ${price.taxLabel}`}
-                  </small>
-                </div>
-                {!price.overridden && (
-                  <div class="price-lines">
-                    <div><span>Gold value ({formatWeight(d.netGoldWeight)} × {formatINR(price.ratePerGram!)}/g {d.purity})</span><span>{formatINR(price.goldValue)}</span></div>
-                    <div><span>Making charges ({describeMakingCharges(d)})</span><span>{formatINR(price.makingCharges)}</span></div>
-                    {price.stoneCharges > 0 && (
-  <div>
-    <span>{d.metal === 'diamond' ? 'Diamond charges' : 'Stone charges'}</span>
-    <span>{formatINR(price.stoneCharges)}</span>
-  </div>
-)}
-                    {price.wastage > 0 && <div><span>Wastage</span><span>{formatINR(price.wastage)}</span></div>}
-                    {price.otherCharges > 0 && <div><span>Other charges</span><span>{formatINR(price.otherCharges)}</span></div>}
-                    <div><span>{price.taxLabel} ({price.taxPercent}%)</span><span>{formatINR(price.taxAmount)}</span></div>
-                  </div>
-                )}
-                {price.ratesUpdatedAt && !price.overridden && (
-                  <div class="disclaimer">Gold rates updated: {formatDateTime(price.ratesUpdatedAt)}</div>
-                )}
-              </>
-            ) : (
-              <>
-                <div class="total" style="font-size:24px;">Price on Request</div>
-                <div class="disclaimer">
-                  {price.ratesStale
-                    ? 'Our gold rates are being updated. Please contact the store for today’s price.'
-                    : 'Please contact the store for the current price of this piece.'}
-                </div>
-              </>
-            )}
-            {price.disclaimer && <div class="disclaimer">{price.disclaimer}</div>}
-          </div>
-
-          <!-- Specifications -->
           <table class="spec-table">
             <tbody>
               {category && <tr><th>Category</th><td><a href={href(`/category/${category.slug}`)} style="color:var(--gold-deep);">{category.data.name}</a></td></tr>}
@@ -153,15 +109,12 @@ const availLabel =
               <tr><th>Gross Weight</th><td>{formatWeight(d.grossWeight)}</td></tr>
               <tr><th>Net Gold Weight</th><td>{formatWeight(d.netGoldWeight)}</td></tr>
               {d.stoneWeight > 0 && <tr><th>Stone Weight</th><td>{formatWeight(d.stoneWeight)}</td></tr>}
-              <tr><th>Making Charges</th><td>{describeMakingCharges(d)}</td></tr>
-              {d.wastagePercent > 0 && <tr><th>Wastage</th><td>{d.wastagePercent}%</td></tr>}
               <tr><th>Availability</th><td>{availLabel}</td></tr>
               {d.updatedAt && <tr><th>Last Updated</th><td>{d.updatedAt}</td></tr>}
             </tbody>
           </table>
 
-          <!-- Hallmark & HUID -->
-          <div class="price-box" style="background:var(--ivory);">
+         <div class="detail-info-box" style="background:var(--ivory);">
             <h3 style="font-size:20px; margin-bottom:10px;">Hallmark &amp; Purity</h3>
             {d.bisHallmark && d.huid ? (
               <table class="spec-table" style="margin:0;">
@@ -177,7 +130,6 @@ const availLabel =
             )}
           </div>
 
-          <!-- CTAs -->
           <div class="cta-row">
             <a class="btn btn-solid" href={waUrl} target="_blank" rel="noopener">Enquire on WhatsApp</a>
             <a class="btn btn-dark" href={telUrl}>Call Store</a>
@@ -187,6 +139,7 @@ const availLabel =
           </div>
 
           {d.shortDescription && <p style="color:var(--taupe); margin-top:14px;">{d.shortDescription}</p>}
+
           <div style="margin-top:10px; max-width:60ch;">
             <Content />
           </div>

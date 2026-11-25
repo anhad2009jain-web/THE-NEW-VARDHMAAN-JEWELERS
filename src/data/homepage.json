@@ -10,7 +10,7 @@
     "secondaryButtonLabel": "Discover Wedding Jewellery",
     "secondaryButtonLink": "/collections/wedding"
   },
-  "promoText": "BIS hallmarked gold jewellery • Transparent per-gram pricing • Wedding and everyday collections",
+  "promoText": "BIS hallmarked gold jewellery • Exquisite craftsmanship • Wedding and everyday collections",
  "video": {
   "enabled": true,
   "file": "https://res.cloudinary.com/of56h5di/video/upload/v1795177530/advertisement_tnvj.mp4"
@@ -52,8 +52,8 @@
         "text": "Every gold article carries a BIS hallmark with HUID wherever applicable."
       },
       {
-        "title": "Transparent Pricing",
-        "text": "Per-gram gold value, making charges and taxes are shown clearly for every piece."
+       "title": "Craftsmanship & Purity",
+       "text": "Discover carefully selected jewellery, exceptional craftsmanship and trusted purity in every piece."
       },
       {
         "title": "Wedding Specialists",

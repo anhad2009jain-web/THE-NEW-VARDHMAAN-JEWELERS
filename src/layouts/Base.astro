@@ -4,7 +4,7 @@ import site from '../data/site.json';
 import { asset } from '../lib/urls';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import GoldRateBar from '../components/GoldRateBar.astro';
+
 
 interface Props {
   title?: string;
@@ -43,7 +43,7 @@ const ogImg = ogImage ? new URL(asset(ogImage), Astro.site) : undefined;
   </head>
   <body>
     {site.demoMode && site.demoNotice && <div class="demo-notice">{site.demoNotice}</div>}
-    <GoldRateBar />
+    
     <Header />
     <main>
       <slot />

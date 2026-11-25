@@ -48,12 +48,7 @@ const purities = [...new Set(products.map((p) => p.data.purity))];
           </select>
         </div>
         <div>
-          <label for="f-price-min">Min Price (₹)</label>
-          <input id="f-price-min" type="number" min="0" placeholder="0" />
-        </div>
-        <div>
-          <label for="f-price-max">Max Price (₹)</label>
-          <input id="f-price-max" type="number" min="0" placeholder="Any" />
+          
         </div>
         <div>
           <label for="f-weight">Max Weight (g)</label>
@@ -83,8 +78,7 @@ const purities = [...new Set(products.map((p) => p.data.purity))];
           <select id="f-sort">
             <option value="featured">Featured</option>
             <option value="new">New Arrivals</option>
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
+            
           </select>
         </div>
       </div>
@@ -109,8 +103,7 @@ const purities = [...new Set(products.map((p) => p.data.purity))];
     const noResults = document.getElementById('no-results');
     const els = {
       purity: document.getElementById('f-purity'),
-      min: document.getElementById('f-price-min'),
-      max: document.getElementById('f-price-max'),
+     
       weight: document.getElementById('f-weight'),
       avail: document.getElementById('f-avail'),
       occ: document.getElementById('f-occ'),
@@ -122,11 +115,10 @@ const purities = [...new Set(products.map((p) => p.data.purity))];
       const cards = [...grid.querySelectorAll('.card')];
       let visible = 0;
       for (const card of cards) {
-        const price = parseFloat(card.dataset.price || '') || null;
+        
         let ok = true;
         if (els.purity?.value && card.dataset.purity !== els.purity.value) ok = false;
-        if (els.min?.value && (price === null || price < +els.min.value)) ok = false;
-        if (els.max?.value && (price === null || price > +els.max.value)) ok = false;
+        
         if (els.weight?.value && parseFloat(card.dataset.weight || '0') > +els.weight.value) ok = false;
         if (els.avail?.value && card.dataset.availability !== els.avail.value) ok = false;
         if (els.occ?.value && card.dataset.occasion !== els.occ.value) ok = false;
@@ -136,9 +128,7 @@ const purities = [...new Set(products.map((p) => p.data.purity))];
       // sorting
       const sortVal = els.sort?.value;
       const visibleCards = cards.filter((c) => c.style.display !== 'none');
-      const score = (c) => parseFloat(c.dataset.price || '') || Infinity;
-      if (sortVal === 'price-asc') visibleCards.sort((a, b) => score(a) - score(b));
-      if (sortVal === 'price-desc') visibleCards.sort((a, b) => score(b) - score(a));
+      
       if (sortVal === 'new') visibleCards.sort((a, b) => (b.dataset.new === 'true') - (a.dataset.new === 'true'));
       if (sortVal === 'featured') visibleCards.sort((a, b) => (b.dataset.featured === 'true') - (a.dataset.featured === 'true'));
       visibleCards.forEach((c) => grid.appendChild(c));

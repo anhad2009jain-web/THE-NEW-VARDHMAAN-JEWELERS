@@ -10,11 +10,7 @@ photos:
 grossWeight: 129.7
 netGoldWeight: 25.85
 stoneWeight: 3.77
-stonePrice: 9500
-makingChargeType: percent
-makingChargeValue: 10
-wastagePercent: 0
-otherCharges: 0
+
 bisHallmark: true
 availability: available
 featured: true

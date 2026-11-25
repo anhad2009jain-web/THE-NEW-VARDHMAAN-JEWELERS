@@ -15,8 +15,8 @@ on the live website automatically within a few minutes.
 3. The first time, GitHub will ask you to install the **Pages CMS** app on the
    website repository — click **Install / Authorize**.
 4. Select the website repository. You will now see the editing dashboard with
-   sections like *Business Information*, *Daily Gold Rates*, *Jewellery Products*
-   and *Gallery Management*.
+   sections like *Business Information*,*Jewellery Products*
+   and *Gallery Management* and *customer reviews*
 
 > There is also a discreet **Owner Login** link at the very bottom of your website
 > that takes you to the same page.
@@ -32,17 +32,7 @@ Every time you press **Save / Commit** in Pages CMS:
 You can watch progress in the repository under the **Actions** tab, but you do not
 need to — just wait a few minutes and refresh the website.
 
-## 3. How to change today's gold rates
 
-1. Open **Daily Gold Rates** in the dashboard.
-2. Enter today's rates (₹ per gram) for 24K, 22K, 18K (and 14K / silver if needed).
-3. Set **Rates Last Updated** to the current date and time.
-4. Save.
-
-**Every product price on the website recalculates automatically.** If you ever
-forget to update rates, the website protects you: after the configured number of
-hours, prices automatically switch to **"Price on Request"** so customers never
-see an outdated price.
 
 ## 4. How to add a new jewellery product
 
@@ -52,16 +42,13 @@ see an outdated price.
    - **Jewellery Category** — pick from the dropdown.
    - **Photographs** — upload one or more photos (first photo is the main image).
    - **Purity**, **Gross Weight**, **Net Gold Weight**.
-   - **Making Charge Type** and **Value** (fixed ₹, ₹ per gram, or %).
-   - Stone details, wastage and other charges if applicable.
+   
    - **HUID** — enter the article's real HUID. If you don't have it, leave it
      empty; the website will show *"Hallmark details available at store."*
    - **Availability** — Available / Sold / Made to Order.
 3. Save. The product appears on the website after the rebuild.
 
-> The price is calculated for you from the weight, purity, making charges and
-> today's gold rate. Only use **Manual Price Override** when you want a special
-> fixed price for a piece.
+
 
 ## 5. How to upload a new ring photograph (example)
 
@@ -70,11 +57,7 @@ see an outdated price.
 3. Drag the photographs to reorder them — the first one is the main photo.
 4. Save.
 
-## 6. How to edit making charges
 
-1. Open **Jewellery Products** → open the product.
-2. Change **Making Charge Type** and/or **Making Charge Value**.
-3. Save — the price recalculates automatically.
 
 ## 7. How to change homepage banners and promotional text
 

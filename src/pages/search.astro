@@ -43,7 +43,7 @@ const searchIndexUrl = href('/search-index.json');
           <div class="card-body">
             <h3><a href="${item.url}">${item.name}</a></h3>
             <div class="card-meta"><span>${item.purity}</span><span>${item.weight}</span><span>${item.category}</span></div>
-            <div class="card-price">${item.price}</div>
+            
           </div>
         </article>`).join('');
       if (hint) hint.style.display = items.length ? 'none' : '';

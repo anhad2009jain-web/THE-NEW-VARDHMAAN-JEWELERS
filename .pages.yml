@@ -5,7 +5,7 @@
 # Docs: https://pagescms.org/docs/configuration/
 #
 # Everything the website displays is edited here. Nothing is hardcoded in the
-# frontend: business details, gold rates, products, gallery, testimonials,
+# frontend: business details, products, gallery, testimonials,
 # homepage banners and About Us content all live in these files.
 # After saving in Pages CMS, GitHub Actions rebuilds and deploys the site.
 # ============================================================================
@@ -369,55 +369,7 @@ content:
             options:
               path: banners
 
-  # --------------------------------------------------------------------------
-  # 3. DAILY GOLD RATES
-  # --------------------------------------------------------------------------
-  - name: gold-rates
-    label: Daily Gold Rates
-    type: file
-    path: src/data/gold-rates.json
-    description: Today's gold rates. Every product price recalculates automatically when these change.
-    fields:
-      - name: rates
-        label: Gold Rates (₹ per gram)
-        type: object
-        required: true
-        fields:
-          - { name: 24K, label: 24K Gold (₹/g), type: number, required: true }
-          - { name: 22K, label: 22K Gold (₹/g), type: number, required: true }
-          - { name: 18K, label: 18K Gold (₹/g), type: number, required: true }
-          - { name: 14K, label: 14K Gold (₹/g), type: number }
-          - { name: 925 Silver, label: 925 Silver (₹/g), type: number }
-      - name: taxPercent
-        label: Tax Percentage
-        type: number
-        description: Applied on top of the subtotal (e.g. 3 for 3% GST). Confirm with your accountant.
-      - name: taxLabel
-        label: Tax Label
-        type: string
-        description: Shown next to the tax line, e.g. GST.
-      - name: maxRateAgeHours
-        label: Rates Expire After (hours)
-        type: number
-        description: If rates are older than this, products show "Price on Request" until rates are updated.
-      - name: updatedAt
-        label: Rates Last Updated
-        type: date
-        required: true
-        options:
-          time: true
-          format: yyyy-MM-dd'T'HH:mmxxx
-      - name: priceDisclaimer
-        label: Price Disclaimer Text
-        type: text
-      - name: demoMode
-        label: Demo Rates Notice
-        type: boolean
-        description: While ON, a notice reminds visitors these are demonstration rates.
-      - name: demoNotice
-        label: Demo Notice Text
-        type: string
-
+  
   # --------------------------------------------------------------------------
   # 4. JEWELLERY PRODUCTS
   # --------------------------------------------------------------------------
@@ -472,7 +424,7 @@ content:
         label: Purity
         type: select
         required: true
-        description: Determines which gold rate is used for price calculation.
+        description: Specifies the purity of the jewellery for product information.
         options:
           values: [24K, 22K, 18K, 14K, 925 Silver, N/A]
       - name: photos
@@ -493,40 +445,11 @@ content:
         label: Net Gold Weight (grams)
         type: number
         required: true
-        description: Used with the gold rate to calculate gold value.
+        description: Technical weight of the gold used in this jewellery item.
       - name: stoneWeight
         label: Stone Weight (grams)
         type: number
-      - name: stonePrice
-        label: Stone Price (₹)
-        type: number
-      - name: diamondPrice
-        label: Diamond Price (₹)
-        type: number
-      - name: makingChargeType
-        label: Making Charge Type
-        type: select
-        required: true
-        options:
-          values:
-            - { name: fixed, label: Fixed amount (₹) }
-            - { name: per-gram, label: Per gram (₹/g) }
-            - { name: percent, label: Percentage of gold value (%) }
-      - name: makingChargeValue
-        label: Making Charge Value
-        type: number
-        required: true
-        description: ₹ amount, ₹ per gram, or percentage — depending on the type above.
-      - name: wastagePercent
-        label: Wastage (%)
-        type: number
-      - name: otherCharges
-        label: Other Charges (₹)
-        type: number
-      - name: priceOverride
-        label: Manual Price Override (₹)
-        type: number
-        description: Optional. If set, this exact price is shown instead of the calculated price.
+     
       - name: bisHallmark
         label: BIS Hallmarked
         type: boolean
@@ -641,31 +564,7 @@ content:
       - name: stoneWeight
         label: Stone Weight (grams)
         type: number
-      - name: diamondPrice
-        label: Diamond Price (₹)
-        type: number
-      - name: stonePrice
-        label: Stone Price (₹)
-        type: number
-      - name: makingChargeType
-        label: Making Charge Type
-        type: select
-        required: true
-        options:
-          values: [fixed, per-gram, percent]
-      - name: makingChargeValue
-        label: Making Charge Value
-        type: number
-        required: true
-      - name: wastagePercent
-        label: Wastage (%)
-        type: number
-      - name: otherCharges
-        label: Other Charges (₹)
-        type: number
-      - name: priceOverride
-        label: Manual Price Override (₹)
-        type: number
+     
       - name: bisHallmark
         label: BIS Hallmarked
         type: boolean
@@ -775,31 +674,8 @@ content:
       - name: stoneWeight
         label: Stone Weight (grams)
         type: number
-      - name: diamondPrice
-        label: Diamond Price (₹)
-        type: number
-      - name: stonePrice
-        label: Stone Price (₹)
-        type: number
-      - name: makingChargeType
-        label: Making Charge Type
-        type: select
-        required: true
-        options:
-          values: [fixed, per-gram, percent]
-      - name: makingChargeValue
-        label: Making Charge Value
-        type: number
-        required: true
-      - name: wastagePercent
-        label: Wastage (%)
-        type: number
-      - name: otherCharges
-        label: Other Charges (₹)
-        type: number
-      - name: priceOverride
-        label: Manual Price Override (₹)
-        type: number
+     
+        
       - name: bisHallmark
         label: BIS Hallmarked
         type: boolean
