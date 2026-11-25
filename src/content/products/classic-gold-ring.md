@@ -10,11 +10,7 @@ photos:
 grossWeight: 4.25
 netGoldWeight: 4.25
 stoneWeight: 0
-stonePrice: 0
-makingChargeType: per-gram
-makingChargeValue: 480
-wastagePercent: 0
-otherCharges: 0
+
 bisHallmark: true
 huid: HUID345678
 availability: available
