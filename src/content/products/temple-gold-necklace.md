@@ -8,12 +8,7 @@ purity: "22K"
 grossWeight: 42.3
 netGoldWeight: 41.8
 stoneWeight: 0.5
-stonePrice: 4500
-makingChargeType: "percent"
-makingChargeValue: 11
-wastagePercent: 0
-otherCharges: 0
-priceOverride: null
+
 bisHallmark: true
 huid: "HUID234567"
 hallmarkNote: ""
