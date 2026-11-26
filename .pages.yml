@@ -535,6 +535,26 @@ content:
       - name: body
         label: Description
         type: rich-text
+        # --------------------------------------------------------------------------
+  # 6. JEWELLERY CATEGORIES (REFERENCE SOURCE)
+  # --------------------------------------------------------------------------
+  - name: categories
+    label: Jewellery Categories
+    type: collection
+    path: src/content/categories
+    operations:
+      create: false
+      rename: false
+      delete: false
+    view:
+      fields: [name]
+      primary: name
+    fields:
+      - name: name
+        label: Category Name
+        type: string
+        required: true
+        readonly: true
   # --------------------------------------------------------------------------
   # 6. GALLERY MANAGEMENT
   # --------------------------------------------------------------------------
