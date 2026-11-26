@@ -439,7 +439,7 @@ content:
       primary: name
       sort: updatedAt
       order: desc
-  fields:
+    fields:
       - name: name
         label: Product Name
         type: string
@@ -494,7 +494,7 @@ content:
       primary: name
       sort: updatedAt
       order: desc
-  fields:
+    fields:
       - name: name
         label: Product Name
         type: string
