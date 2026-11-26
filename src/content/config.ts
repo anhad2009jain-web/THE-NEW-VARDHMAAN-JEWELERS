@@ -3,7 +3,7 @@ import { defineCollection, z } from 'astro:content';
 // Every field below is editable through Pages CMS (.pages.yml → "Jewellery Products").
 const productFields = {
   name: z.string(),
-  productId: z.string().default("),
+  productId: z.string().default(''),
   category: z.string(),
   occasion: z.enum(['wedding', 'everyday', 'traditional', 'festive']).default('everyday'),
   metal: z.enum(['gold', 'diamond', 'silver', 'platinum', 'other']).default('gold'),
