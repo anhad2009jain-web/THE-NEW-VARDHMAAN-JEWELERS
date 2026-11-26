@@ -439,44 +439,14 @@ content:
       primary: name
       sort: updatedAt
       order: desc
-    fields:
+  fields:
       - name: name
         label: Product Name
         type: string
         required: true
-      - name: productId
-        label: Product ID
-        type: string
-        required: true
-      - name: category
-        label: Jewellery Category
-        type: reference
-        required: true
-        options:
-          collection: categories
-          search: "name"
-          value: "{path}"
-          label: "{fields.name}"
-      - name: occasion
-        label: Occasion
-        type: select
-        required: true
-        options:
-          values: [everyday, wedding, traditional, festive]
-      - name: metal
-        label: Metal
-        type: select
-        required: true
-        options:
-          values: [gold]
-      - name: purity
-        label: Purity
-        type: select
-        required: true
-        options:
-          values: [24K, 22K, 18K, 14K, 925 Silver, N/A]
+
       - name: photos
-        label: Product Photographs
+        label: Product Image
         type: image
         required: true
         options:
@@ -484,56 +454,31 @@ content:
             max: 8
           unique: true
           path: products
-      - name: grossWeight
-        label: Gross Weight (grams)
-        type: number
+
+      - name: category
+        label: Category
+        type: reference
         required: true
-      - name: netGoldWeight
-        label: Net Gold Weight (grams)
-        type: number
-        required: true
-      - name: stoneWeight
-        label: Stone Weight (grams)
-        type: number
-     
-      - name: bisHallmark
-        label: BIS Hallmarked
-        type: boolean
-      - name: huid
-        label: HUID Number
-        type: string
-      - name: hallmarkNote
-        label: Hallmark Note
-        type: string
-      - name: availability
-        label: Availability
+        options:
+          collection: categories
+          search: "name"
+          value: "{path}"
+          label: "{fields.name}"
+
+      - name: occasion
+        label: Occasion
         type: select
         required: true
         options:
-          values: [available, sold, made-to-order]
-      - name: featured
-        label: Featured Product
-        type: boolean
-      - name: newArrival
-        label: New Arrival
-        type: boolean
-      - name: bestseller
-        label: Bestseller
-        type: boolean
-      - name: shortDescription
-        label: Short Description
-        type: text
+          values:
+            - { name: everyday, label: Everyday }
+            - { name: wedding, label: Wedding }
+            - { name: traditional, label: Traditional }
+            - { name: festive, label: Festive }
+
       - name: body
-        label: Full Description
-        type: rich-text
-      - name: updatedAt
-        label: Last Updated
-        type: date
-        options:
-          format: yyyy-MM-dd
-      - name: demo
-        label: Demo Product
-        type: boolean
+        label: Description
+        type: rich-text 
 
   # ------# --------------------------------------------------------------------------
   # DIAMOND JEWELLERY PRODUCTS
@@ -549,44 +494,14 @@ content:
       primary: name
       sort: updatedAt
       order: desc
-    fields:
+  fields:
       - name: name
         label: Product Name
         type: string
         required: true
-      - name: productId
-        label: Product ID
-        type: string
-        required: true
-      - name: category
-        label: Jewellery Category
-        type: reference
-        required: true
-        options:
-          collection: categories
-          search: "name"
-          value: "{path}"
-          label: "{fields.name}"
-      - name: occasion
-        label: Occasion
-        type: select
-        required: true
-        options:
-          values: [everyday, wedding, traditional, festive]
-      - name: metal
-        label: Metal
-        type: select
-        required: true
-        options:
-          values: [diamond]
-      - name: purity
-        label: Purity
-        type: select
-        required: true
-        options:
-          values: [24K, 22K, 18K, 14K, 925 Silver, N/A]
+
       - name: photos
-        label: Product Photographs
+        label: Product Image
         type: image
         required: true
         options:
@@ -594,104 +509,31 @@ content:
             max: 8
           unique: true
           path: products
-      - name: grossWeight
-        label: Gross Weight (grams)
-        type: number
-        required: true
-      - name: netGoldWeight
-        label: Net Gold Weight (grams)
-        type: number
-        required: true
-      - name: stoneWeight
-        label: Stone Weight (grams)
-        type: number
-     
-        
-      - name: bisHallmark
-        label: BIS Hallmarked
-        type: boolean
-      - name: huid
-        label: HUID Number
-        type: string
-      - name: hallmarkNote
-        label: Hallmark Note
-        type: string
-      - name: availability
-        label: Availability
-        type: select
+
+      - name: category
+        label: Category
+        type: reference
         required: true
         options:
-          values: [available, sold, made-to-order]
-      - name: featured
-        label: Featured Product
-        type: boolean
-      - name: newArrival
-        label: New Arrival
-        type: boolean
-      - name: bestseller
-        label: Bestseller
-        type: boolean
-      - name: shortDescription
-        label: Short Description
-        type: text
-      - name: body
-        label: Full Description
-        type: rich-text
-      - name: updatedAt
-        label: Last Updated
-        type: date
-        options:
-          format: yyyy-MM-dd
-      - name: demo
-        label: Demo Product
-        type: boolean--------------------------------------------------------------------
-  # 5. JEWELLERY CATEGORIES (albums / collections)
-  # --------------------------------------------------------------------------
-  - name: categories
-    label: Jewellery Categories
-    type: collection
-    path: src/content/categories
-    filename:
-      template: "{primary}.md"
-      field: create
-    view:
-      primary: name
-      sort: order
-      order: asc
-    fields:
-      - name: name
-        label: Category Name
-        type: string
-        required: true
-      - name: group
-        label: Belongs To
+          collection: categories
+          search: "name"
+          value: "{path}"
+          label: "{fields.name}"
+
+      - name: occasion
+        label: Occasion
         type: select
         required: true
         options:
           values:
-            - { name: gold, label: Gold Jewellery }
-            - { name: wedding, label: Wedding & Bridal }
-            - { name: everyday, label: Everyday Jewellery }
-            - { name: diamond, label: Diamond Jewellery }
-            - { name: silver, label: Silver Jewellery }
-      - name: description
-        label: Description
-        type: text
-      - name: coverImage
-        label: Cover Image
-        type: image
-        required: true
-        options:
-          path: categories
-      - name: order
-        label: Display Order
-        type: number
-        description: Lower numbers appear first.
-      - name: enabled
-        label: Visible on Website
-        type: boolean
-        description: Turn OFF to hide this category from customers without deleting it.
+            - { name: everyday, label: Everyday }
+            - { name: wedding, label: Wedding }
+            - { name: traditional, label: Traditional }
+            - { name: festive, label: Festive }
 
+      - name: body
+        label: Description
+        type: rich-text
   # --------------------------------------------------------------------------
   # 6. GALLERY MANAGEMENT
   # --------------------------------------------------------------------------
