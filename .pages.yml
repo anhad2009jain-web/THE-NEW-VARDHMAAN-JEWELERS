@@ -382,6 +382,7 @@ content:
       template: "{primary}.md"
       field: create
     view:
+      fields: [name, photos, category, occasion]
       primary: name
       sort: updatedAt
       order: desc
