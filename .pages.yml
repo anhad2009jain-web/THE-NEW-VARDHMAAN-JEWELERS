@@ -389,21 +389,27 @@ content:
         label: Product Name
         type: string
         required: true
-      - name: productId
-        label: Product ID
-        type: string
+
+      - name: photos
+        label: Product Image
+        type: image
         required: true
-        description: Unique code, e.g. VJ-GR-001. Used in WhatsApp enquiries.
+        options:
+          multiple:
+            max: 8
+          unique: true
+          path: products
+
       - name: category
-        label: jewellery category
+        label: Category
         type: reference
         required: true
-         description: select the jewellery category for this product
         options:
           collection: categories
           search: "name"
           value: "{path}"
           label: "{fields.name}"
+
       - name: occasion
         label: Occasion
         type: select
@@ -414,85 +420,10 @@ content:
             - { name: wedding, label: Wedding }
             - { name: traditional, label: Traditional }
             - { name: festive, label: Festive }
-      - name: metal
-        label: Metal
-        type: select
-        required: true
-        options:
-          values: [gold, diamond, silver, platinum, other]
-      - name: purity
-        label: Purity
-        type: select
-        required: true
-        description: Specifies the purity of the jewellery for product information.
-        options:
-          values: [24K, 22K, 18K, 14K, 925 Silver, N/A]
-      - name: photos
-        label: Product Photographs
-        type: image
-        required: true
-        description: First photograph is the main image. Add multiple angles.
-        options:
-          multiple:
-            max: 8
-          unique: true
-          path: products
-      - name: grossWeight
-        label: Gross Weight (grams)
-        type: number
-        required: true
-      - name: netGoldWeight
-        label: Net Gold Weight (grams)
-        type: number
-        required: true
-        description: Technical weight of the gold used in this jewellery item.
-      - name: stoneWeight
-        label: Stone Weight (grams)
-        type: number
-     
-      - name: bisHallmark
-        label: BIS Hallmarked
-        type: boolean
-      - name: huid
-        label: HUID Number
-        type: string
-        description: The article's actual HUID. Never invent one — leave empty if unavailable.
-      - name: hallmarkNote
-        label: Hallmark Note
-        type: string
-      - name: availability
-        label: Availability
-        type: select
-        required: true
-        options:
-          values:
-            - { name: available, label: Available }
-            - { name: sold, label: Sold }
-            - { name: made-to-order, label: Made to Order }
-      - name: featured
-        label: Featured Product
-        type: boolean
-      - name: newArrival
-        label: New Arrival
-        type: boolean
-      - name: bestseller
-        label: Bestseller
-        type: boolean
-      - name: shortDescription
-        label: Short Description
-        type: text
+
       - name: body
-        label: Full Description
+        label: Description
         type: rich-text
-      - name: updatedAt
-        label: Last Updated
-        type: date
-        options:
-          format: yyyy-MM-dd
-      - name: demo
-        label: Demo Product
-        type: boolean
-        description: Marks this as demonstration content (not real inventory).
 
         # --------------------------------------------------------------------------
   # GOLD JEWELLERY PRODUCTS
