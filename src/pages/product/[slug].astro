@@ -88,46 +88,17 @@ const availLabel =
         </div>
 
         <div>
-          <div>
-            {d.newArrival && <span class="badge">New Arrival</span>}
-            {d.bestseller && <span class="badge">Bestseller</span>}
-            <span class={`badge ${d.availability === 'sold' ? 'sold' : d.availability === 'made-to-order' ? 'order' : ''}`}>{availLabel}</span>
-            {d.demo && <span class="badge demo">Demo</span>}
-          </div>
-
           <h1 style="font-size:clamp(28px,4vw,42px); margin-top:10px;">{d.name}</h1>
 
-          <p style="color:var(--taupe); font-size:13px; letter-spacing:.1em; text-transform:uppercase; margin-top:6px;">
-            Product ID: {d.productId}
-          </p>
-
-          <table class="spec-table">
-            <tbody>
-              {category && <tr><th>Category</th><td><a href={href(`/category/${category.slug}`)} style="color:var(--gold-deep);">{category.data.name}</a></td></tr>}
-              <tr><th>Metal</th><td style="text-transform:capitalize;">{d.metal}</td></tr>
-              <tr><th>Purity</th><td>{d.purity}</td></tr>
-              <tr><th>Gross Weight</th><td>{formatWeight(d.grossWeight)}</td></tr>
-              <tr><th>Net Gold Weight</th><td>{formatWeight(d.netGoldWeight)}</td></tr>
-              {d.stoneWeight > 0 && <tr><th>Stone Weight</th><td>{formatWeight(d.stoneWeight)}</td></tr>}
-              <tr><th>Availability</th><td>{availLabel}</td></tr>
-              {d.updatedAt && <tr><th>Last Updated</th><td>{d.updatedAt}</td></tr>}
-            </tbody>
-          </table>
-
-         <div class="detail-info-box" style="background:var(--ivory);">
-            <h3 style="font-size:20px; margin-bottom:10px;">Hallmark &amp; Purity</h3>
-            {d.bisHallmark && d.huid ? (
-              <table class="spec-table" style="margin:0;">
-                <tbody>
-                  <tr><th>BIS Hallmark</th><td>Yes — BIS hallmarked</td></tr>
-                  <tr><th>Purity Mark</th><td>{d.purity}</td></tr>
-                  <tr><th>HUID</th><td style="letter-spacing:.08em;">{d.huid}</td></tr>
-                  {d.hallmarkNote && <tr><th>Verification</th><td>{d.hallmarkNote}</td></tr>}
-                </tbody>
-              </table>
-            ) : (
-              <p style="font-size:14px; color:var(--taupe);">Hallmark details available at store.</p>
+          <div class="spec-table">
+            {category && (
+              <p>
+                <strong>Category:</strong> {category.data.name}
+              </p>
             )}
+            <p>
+              <strong>Occasion:</strong> <span style="text-transform:capitalize;">{d.occasion}</span>
+            </p>
           </div>
 
           <div class="cta-row">
