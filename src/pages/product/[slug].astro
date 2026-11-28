@@ -17,7 +17,8 @@ export async function getStaticPaths() {
 const { product } = Astro.props;
 const d = product.data;
 const materialLabel =
-  d.material.trim() || [d.purity, d.metal].filter(Boolean).join(' ');
+  (d.material || '').trim() ||
+  [d.purity, d.metal].filter(Boolean).join(' ');
 const { Content } = await product.render();
 const category = await resolveCategory(d.category);
 
@@ -100,11 +101,13 @@ const availLabel =
             )}
             <p>
 {materialLabel && (
-  <p>
-    <strong>Material:</strong> {materialLabel}
-  </p>
-)}
-              <strong>Occasion:</strong> <span style="text-transform:capitalize;">{d.occasion}</span>
+              <p>
+                <strong>Material:</strong> {materialLabel}
+              </p>
+            )}
+            <p>
+              <strong>Occasion:</strong>{' '}
+              <span style="text-transform:capitalize;">{d.occasion}</span>
             </p>
           </div>
 
