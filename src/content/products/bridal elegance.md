@@ -1,20 +1,10 @@
 ---
-name: bridal elegance
-productId: VJ-GR-008
+name: GOLD PENDANT SET 4
+photos:
+  - /uploads/PENDANT 4.jpeg
 category: src/content/categories/bridal-sets.md
 occasion: wedding
-metal: gold
-purity: 22K
-photos:
-  - /uploads/new set.jpeg
-grossWeight: 24
-netGoldWeight: 20
-
-bisHallmark: false
-availability: available
-featured: false
-newArrival: false
-bestseller: false
-updatedAt: 2026-11-19
-demo: false
 ---
+GROSS WEIGHT -67.250
+
+NET WEIGHT-24.24O
