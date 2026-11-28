@@ -1,21 +1,10 @@
 ---
 name: GOLD PENDANT SET 2
-productId: VJ-SA-002
-category: src/content/categories/gold pendant set.md
-occasion: wedding
-metal: gold
-purity: 22K
 photos:
   - /uploads/pendant set 3-1.jpeg
-grossWeight: 95.81
-netGoldWeight: 36.58
-stoneWeight: 59.23
-
-bisHallmark: false
-availability: available
-featured: true
-newArrival: false
-bestseller: false
-updatedAt: 2026-11-23
-demo: false
+category: src/content/categories/gold pendant set.md
+occasion: wedding
 ---
+net weight-36.580
+
+ gross weight-95.810
