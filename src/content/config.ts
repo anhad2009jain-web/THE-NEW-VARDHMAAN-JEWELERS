@@ -6,8 +6,9 @@ const productFields = {
   productId: z.string().default(''),
   category: z.string(),
   occasion: z.enum(['wedding', 'everyday', 'traditional', 'festive']).default('everyday'),
-  metal: z.enum(['gold', 'diamond', 'silver', 'platinum', 'other']).default('gold'),
-  purity: z.enum(['24K', '22K', '18K', '14K', '925 Silver', 'N/A']).default('22K'),
+  metal: z.enum(['gold', 'diamond', 'silver', 'platinum', 'other']).optional(),
+  purity: z.enum(['24K', '22K', '18K', '14K', '925 Silver', 'N/A']).optional(),
+  material: z.string().default(''),
   grossWeight: z.number().nonnegative().default(0),
  
   netGoldWeight: z.number().nonnegative().default(0),
