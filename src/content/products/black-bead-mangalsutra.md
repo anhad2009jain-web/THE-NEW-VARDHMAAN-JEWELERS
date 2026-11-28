@@ -1,27 +1,10 @@
 ---
-name: "22K diamond ring "
-productId: VJ-GM-001
-category: bridal-chokers.md
-occasion: wedding
-metal: diamond
-purity: 22K
+name: "14K diamond ring "
 photos:
   - /uploads/diamond jewellery.jpeg
-grossWeight: 9.15
-netGoldWeight: 8.9
-stoneWeight: 0
-
-bisHallmark: true
-huid: HUID567890
-availability: available
-featured: false
-newArrival: true
-bestseller: false
-shortDescription: Demonstration product — 22k gold mangalsutra shown to
-  demonstrate catalogue features. Replace with real inventory in Pages CMS.
-updatedAt: 2026-11-17
-demo: false
+category: src/content/categories/diamond-rings.md
+occasion: everyday
 ---
-Demonstration description for **22K Gold Mangalsutra**.
+GROSS WEIGHT 8.700
 
-This sample entry demonstrates how product specifications, photographs, hallmark details and automatic price calculation appear on the website. Replace it with a real article through Pages CMS.
+DIAMOND WEIGHT 1.64
