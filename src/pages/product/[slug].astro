@@ -16,6 +16,8 @@ export async function getStaticPaths() {
 
 const { product } = Astro.props;
 const d = product.data;
+const materialLabel =
+  d.material.trim() || [d.purity, d.metal].filter(Boolean).join(' ');
 const { Content } = await product.render();
 const category = await resolveCategory(d.category);
 
@@ -54,7 +56,7 @@ const availLabel =
       : 'Made to Order';
 ---
 
-<Base title={d.name} description={d.shortDescription || `${d.name} — ${d.purity}, ${formatWeight(d.netGoldWeight)}`} ogImage={d.photos[0]}>
+<Base title={d.name} description={d.shortDescription || `${d.name} — ${materialLabel || 'Jewellery'}`} ogImage={d.photos[0]}>
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <div class="container">
@@ -97,6 +99,11 @@ const availLabel =
               </p>
             )}
             <p>
+{materialLabel && (
+  <p>
+    <strong>Material:</strong> {materialLabel}
+  </p>
+)}
               <strong>Occasion:</strong> <span style="text-transform:capitalize;">{d.occasion}</span>
             </p>
           </div>
