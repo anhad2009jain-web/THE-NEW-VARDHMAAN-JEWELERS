@@ -1,27 +1,10 @@
 ---
-name: "Featherlight Daily Wear Ring"
-productId: "VJ-LR-001"
-category: "lightweight-rings"
-occasion: "everyday"
-metal: "gold"
-purity: "18K"
-grossWeight: 1.85
-netGoldWeight: 1.85
-stoneWeight: 0
-
-bisHallmark: true
-huid: ""
-hallmarkNote: ""
-availability: "available"
-featured: false
-newArrival: true
-bestseller: true
-photos: ["/uploads/products/featherlight-ring-1.svg", "/uploads/products/featherlight-ring-2.svg"]
-shortDescription: "Demonstration product — featherlight daily wear ring shown to demonstrate catalogue features. Replace with real inventory in Pages CMS."
-updatedAt: "2026-11-17"
-demo: true
+name: ANTIQUE GOLD BRIDAL SET 1
+photos:
+  - /uploads/PENDANT 5.jpeg
+category: src/content/categories/bridal-sets.md
+occasion: wedding
 ---
+GROSS WEIHT - 58.970
 
-Demonstration description for **Featherlight Daily Wear Ring**.
-
-This sample entry demonstrates how product specifications, photographs, hallmark details and automatic price calculation appear on the website. Replace it with a real article through Pages CMS.
+NET WEIGHT -44.060
