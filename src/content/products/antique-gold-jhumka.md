@@ -1,21 +1,10 @@
 ---
 name: GOLD PENDANT SET 3
-productId: VJ-GE-003
+photos:
+  - /uploads/gold pendant 3.jpeg
 category: src/content/categories/gold pendant set.md
 occasion: wedding
-metal: gold
-purity: 22K
-photos:
-  - /uploads/pendant set 2-1.jpeg
-grossWeight: 76.67
-netGoldWeight: 21.04
-
-bisHallmark: true
-huid: HUID456789
-availability: available
-featured: true
-newArrival: true
-bestseller: false
-updatedAt: 2026-11-23
-demo: false
 ---
+net weight 19.840
+
+gross weight 64.840
