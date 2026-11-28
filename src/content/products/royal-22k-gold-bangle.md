@@ -1,27 +1,10 @@
 ---
-name: "Royal 22K Gold Bangle"
-productId: "VJ-GB-001"
-category: "gold-bangles"
-occasion: "traditional"
-metal: "gold"
-purity: "22K"
-grossWeight: 18.45
-netGoldWeight: 18.45
-stoneWeight: 0
-
-bisHallmark: true
-huid: "HUID123456"
-hallmarkNote: ""
-availability: "available"
-featured: true
-newArrival: false
-bestseller: true
-photos: ["/uploads/products/royal-22k-gold-bangle-1.svg", "/uploads/products/royal-22k-gold-bangle-2.svg"]
-shortDescription: "Demonstration product — royal 22k gold bangle shown to demonstrate catalogue features. Replace with real inventory in Pages CMS."
-updatedAt: "2026-11-17"
-demo: true
+name: 14K DIAMON RING 2
+photos:
+  - /uploads/DIAMOND RING.jpeg
+category: src/content/categories/diamond-rings.md
+occasion: everyday
 ---
+GROSS WEIGHT-3.973
 
-Demonstration description for **Royal 22K Gold Bangle**.
-
-This sample entry demonstrates how product specifications, photographs, hallmark details and automatic price calculation appear on the website. Replace it with a real article through Pages CMS.
+DIAMOND WEIGHT-0.72CT
