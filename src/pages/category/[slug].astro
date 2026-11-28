@@ -25,7 +25,9 @@ for (const p of all) {
   }
 }
 
-const purities = [...new Set(products.map((p) => p.data.purity))];
+const purities = [...new Set(
+  products.map((p) => p.data.purity).filter((p): p is string => Boolean(p))
+)];
 ---
 
 <Base title={c.name} description={c.description || `${c.name} at Vardhman Jewellers, Jammu`} ogImage={c.coverImage}>
