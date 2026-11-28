@@ -421,6 +421,10 @@ content:
             - { name: wedding, label: Wedding }
             - { name: traditional, label: Traditional }
             - { name: festive, label: Festive }
+            - name: material
+        label: Material (Optional)
+        type: string
+        description: Enter material and purity, e.g. 14 Karat Gold. Leave empty if not applicable.
 
       - name: body
         label: Description
@@ -476,7 +480,10 @@ content:
             - { name: wedding, label: Wedding }
             - { name: traditional, label: Traditional }
             - { name: festive, label: Festive }
-
+      - name: material
+        label: Material (Optional)
+        type: string
+        description: Enter material and purity, e.g. 14 Karat Gold. Leave empty if not applicable.
       - name: body
         label: Description
         type: rich-text 
@@ -531,7 +538,10 @@ content:
             - { name: wedding, label: Wedding }
             - { name: traditional, label: Traditional }
             - { name: festive, label: Festive }
-
+      - name: material
+        label: Material (Optional)
+        type: string
+        description: Enter material and purity, e.g. 14 Karat Gold. Leave empty if not applicable.  
       - name: body
         label: Description
         type: rich-text
