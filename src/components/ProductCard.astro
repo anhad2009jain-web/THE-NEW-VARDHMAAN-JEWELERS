@@ -9,6 +9,8 @@ interface Props {
 
 const { product } = Astro.props;
 const d = product.data;
+const materialLabel =
+  d.material.trim() || [d.purity, d.metal].filter(Boolean).join(' ');
 const productUrl = href(`/product/${product.slug}`);
 
 const availBadge =
@@ -20,7 +22,7 @@ const availBadge =
 ---
 
 <article class="card"
-  data-purity={d.purity}
+  data-purity={d.purity ?? ''}
   data-availability={d.availability}
   data-occasion={d.occasion}
   data-new={d.newArrival}
@@ -28,8 +30,8 @@ const availBadge =
   <a href={productUrl} class="thumb">
     <img
       src={asset(d.photos[0])}
-      alt={`${d.name} — ${d.purity} ${d.metal}`}
-      loading="lazy"
+      alt={`${d.name}${materialLabel ? ` — ${materialLabel}` : ''}`}
+      ding="lazy"
       width="600"
       height="600"
     />
@@ -43,11 +45,10 @@ const availBadge =
       {d.demo && <span class="badge demo">Demo</span>}
     </div>
 
-    <h3><a href={productUrl}>{d.name}</a></h3>
-
     <div class="card-meta">
-      <span>{d.purity}</span>
-      {d.netGoldWeight > 0 && <span>{formatWeight(d.netGoldWeight)}</span>}
+  {materialLabel && <span>{materialLabel}</span>}
+  {d.netGoldWeight > 0 && <span>{formatWeight(d.netGoldWeight)}</span>}
+</div>
       <span>{d.metal}</span>
     </div>
 
